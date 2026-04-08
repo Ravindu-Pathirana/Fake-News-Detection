@@ -1,8 +1,6 @@
 # Fake-News-Detection
 This repository presents an Explainable Fake News Detection system developed using classical machine learning techniques and evaluated on the LIAR benchmark dataset. The project focuses not only on improving classification performance but also on enhancing model interpretability using Explainable AI (XAI) methods.
 
-⸻
-
 🚀 Key Features
 	•	🔍 Binary Fake News Classification (Fake vs Real)
 	•	📊 Baseline Reproduction using:
@@ -21,16 +19,12 @@ This repository presents an Explainable Fake News Detection system developed usi
 	•	📈 Hyperparameter Optimization using GridSearchCV
 	•	🔎 Explainability Analysis:
 	•	SHAP (global & local interpretation)
-
-⸻
-
+	
 📊 Results Summary
 	•	Best Model: XGBoost
 	•	Achieved F1-score up to 0.87
 	•	Feature selection significantly improved performance
 	•	Explainability analysis shows models rely on meaningful linguistic patterns  ￼
-
-⸻
 
 🧪 Dataset
 	•	LIAR Dataset (Wang, 2017)
@@ -39,8 +33,6 @@ This repository presents an Explainable Fake News Detection system developed usi
 	•	Includes:
 	•	Train / Validation / Test splits
 	•	Text + meta-data features
-
-⸻
 
 ⚙️ Methodology Overview
 	1.	Data preprocessing (cleaning, tokenization, stemming)
@@ -54,15 +46,11 @@ This repository presents an Explainable Fake News Detection system developed usi
 	•	F1-score
 	6.	Explainability using SHAP
 
-⸻
-
 🧠 Key Insights
 	•	Feature selection is more important than model choice
 	•	Ensemble models outperform linear models
 	•	Mutual Information provides more stable results
 	•	Explainability improves trust in predictions  ￼
-
-⸻
 
 🛠️ Tech Stack
 	•	Python
@@ -71,14 +59,10 @@ This repository presents an Explainable Fake News Detection system developed usi
 	•	Pandas / NumPy
 	•	SHAP (Explainable AI)
 
-⸻
-
 📌 Future Work
 	•	Incorporate social/contextual features
 	•	Apply deep learning (LSTM, BERT)
 	•	Improve real-world deployment robustness
-
-⸻
 
 👨‍💻 Author
 
