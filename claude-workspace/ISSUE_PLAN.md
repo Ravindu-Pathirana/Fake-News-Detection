@@ -250,6 +250,20 @@ the *interpretable, low-resource* alternative, not the state of the art.
 epochs on the binary task via HuggingFace `Trainer`; report its macro-F1 as an upper-reference
 row. If not feasible, cite published LIAR transformer results and position accordingly.
 
+**STATUS (2026-08-23): I-8 transformer baseline done.** New notebook
+`artifacts/distilbert_baseline_v1.ipynb` fine-tunes `distilbert-base-uncased` for 3
+epochs (seed 42, lr 2e-5, batch 16, MPS backend on Apple Silicon) on the raw
+`Statement` text with corrected labels, using the same `liar_utils.evaluate_full`
+metric set as every other notebook. Result: test macro-F1 = 0.636 (acc 0.650,
+fake F1 0.565) — saved to `artifacts/transformer_baseline_results_v1.csv`.
+**Notable finding: this does NOT exceed the best classical result** (Naive Bayes +
+metadata, Phase 3, macro-F1 0.649) — on LIAR's short single-sentence statements, a
+well-engineered sparse text+metadata representation is competitive with a
+pretrained transformer at only 3 fine-tuning epochs. No significance test was run
+between DistilBERT and the classical results; flagged as future work. I-9
+(rewrite overclaims) is addressed directly in the new LaTeX draft (see below), not
+as separate code.
+
 ### I-9 — Rewrite overclaims
 **Steps.** Replace "F1 up to 0.87 outperforming baseline" and "feature selection matters more
 than model choice" with claims the corrected ablation + significance tests actually support
@@ -270,6 +284,25 @@ deception cues. Currently framed as validation.
    of qualitative examples.
 **Recommended method.** `shap.TreeExplainer` on the corrected best model; global bar +
 beeswarm; discuss that interpretability reveals bias, motivating future contextual features.
+
+**STATUS (2026-08-23): Phase 5 complete.** New notebook
+`artifacts/shap_explainability_v1.ipynb` reruns SHAP on XGBoost (text+metadata,
+Chi2 k=1000, corrected labels, test macro-F1 = 0.605). Adds: (1) un-stemmed
+display labels (I-12) via a stem→most-common-surface-form map built from the
+training corpus; (2) a genuine per-class breakdown (top features pushing toward
+*fake* vs. toward *real*, not just global |importance|), saved to
+`artifacts/shap_top_features_v1.csv`; (3) five figures in `artifacts/figures/`
+(global bar, beeswarm, per-class two-sided bar, and two force-plot examples).
+**Key finding: `Party: democrat` is among the strongest fake-pushing features and
+`Party: republican` among the strongest real-pushing ones** — direct evidence of
+partisan/topical bias in what the model keys on, not a deception signal. This
+confirms and sharpens the original notebook's same top-feature pattern
+(obama/obamacare/socialist etc.) — reframed here as a limitation, not a
+validation, consistent with I-10's intent. Two more figures
+(`chi2_top_features.png`, `mi_top_features.png`) were also regenerated on the
+corrected labels with readable un-stemmed labels via
+`artifacts/make_feature_selection_figures.py`, reproducing the original paper's
+Fig. 1/Fig. 2 correctly.
 
 ---
 

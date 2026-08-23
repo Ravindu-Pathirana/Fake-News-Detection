@@ -84,16 +84,39 @@ _Re-read this at the start of each session. Append dated entries as work progres
   best model" would repeat the overclaiming pattern this whole review exists to fix.
 - Bootstrap 95% CI on stage 4 test macro-F1: [0.597, 0.649] (point estimate 0.623).
 
+## Progress (2026-08-23, cont'd) — Phase 4 (I-8) and Phase 5 done; full LaTeX draft written
+- `artifacts/distilbert_baseline_v1.ipynb`: fine-tuned distilbert-base-uncased, 3
+  epochs, MPS backend, seed 42. Test macro-F1 = 0.636 (acc 0.650, fake F1 0.565).
+  **Does NOT beat the best classical result** (NB+metadata, 0.649) — a genuinely
+  interesting finding, not a placeholder number. No significance test run between
+  them yet (flagged as future work in the paper draft).
+- `artifacts/shap_explainability_v1.ipynb`: SHAP on XGBoost (text+metadata, chi2
+  k=1000, corrected labels, test macro-F1 0.605). Un-stemmed display labels,
+  genuine per-class breakdown (top fake-pushing vs. real-pushing features), 5
+  figures saved to `artifacts/figures/`. **Party affiliation is directly visible as
+  a top bias feature** (Party:democrat pushes fake, Party:republican pushes real) —
+  strong, concrete evidence for the "topical/dataset bias, not deception cues"
+  reframing.
+- `artifacts/make_feature_selection_figures.py`: regenerated the original paper's
+  Fig.1/Fig.2 (top Chi2/MI features) on corrected labels with readable un-stemmed
+  labels.
+- **Full corrected LaTeX paper written**: `claude-working-files/paper_v2.tex`
+  (IEEEtran, single self-contained file, thebibliography inline). Same title/
+  author as the original PDF (this supersedes it, not a new paper). Incorporates
+  every number from Phases 1-5 across 6 tables + 8 figures (all real, copied into
+  `claude-working-files/figures/` — no placeholder images). Two TODOs left
+  in-file for the author: (1) verify/add 2-3 more 2021-2025 LIAR-specific
+  transformer citations beyond BERT/DistilBERT/FakeBERT (deliberately not
+  fabricated); (2) double check affiliation/email are current. Not compiled
+  locally (no LaTeX toolchain on this machine) — recommend Overleaf or local
+  texlive to verify before submission.
+
 ## Open threads / next steps
-1. ~~Fix label mapping (case-insensitive) and rerun full pipeline; report macro-F1 + per-class.~~ DONE
-2. ~~Add majority-class + class-weighted baselines; report confusion matrices.~~ DONE
-3. ~~Reconcile paper claims (metadata) with code, or actually implement metadata features.~~ DONE (Option A)
-4. ~~Full ablation: text -> +metadata -> +feature selection -> +tuning, with CV variance
-   and significance testing.~~ DONE — see finding above. Phases 1-3 exit criteria all met;
-   next per the critical path (§8) is Phase 4 (positioning/related work) and Phase 6
-   (rewrite Results section to cite stage 3 + the significance caveat, not the old 0.87).
-5. Refresh related work; add a modern (BERT) reference point. (Phase 4)
-6. Consider revision-checklist document for the author.
-7. Statistical rigor (Phase 2, I-6): repeat over >=5 seeds, mean +/- std, significance test.
-8. Reproducibility harness (Phase 2, I-13): wrap TF-IDF -> SelectKBest -> model in a single
-   sklearn Pipeline per model so preprocessing is fit inside each CV fold structurally.
+1-4. ~~Phases 1-3 (label fix, baselines, metadata, ablation+significance).~~ DONE
+5. ~~Refresh related work; add a modern (BERT) reference point.~~ DONE (Phase 4,
+   DistilBERT — see finding above)
+6. Consider revision-checklist document for the author. (Phase 7 covers this)
+7-8. ~~Statistical rigor + reproducibility Pipeline harness.~~ DONE (Phase 2)
+9. Remaining: Phase 6 polish (the LaTeX draft already writes IEEE prose and cites
+   the significance caveat, but hasn't been proofread/compiled), and Phase 7's
+   final pre-submission checklist pass once the author reviews `paper_v2.tex`.

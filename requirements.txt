@@ -11,3 +11,10 @@ statsmodels==0.14.6
 jupyter==1.1.1
 notebook==7.5.1
 ipykernel==6.31.0
+
+# Phase 4 (I-8): DistilBERT reference baseline only -- not needed for the
+# classical-ML pipeline notebooks (Phases 0-3).
+torch==2.8.0
+transformers==4.57.6
+datasets==4.5.0
+accelerate==1.10.1

@@ -1,0 +1,2 @@
+Pipeline,Method,Model,Test Accuracy,Test Macro-F1,Test Fake Precision,Test Fake Recall,Test Fake F1,Test Real F1,Test Confusion Matrix
+Transformer,Fine-tuned (3 epochs),distilbert-base-uncased,0.6495659037095501,0.6357215012821509,0.6167023554603854,0.5207956600361664,0.5647058823529412,0.7067371202113606,"[[288, 265], [179, 535]]"
