@@ -39,10 +39,24 @@ _Re-read this at the start of each session. Append dated entries as work progres
 - SHAP top features are topical/entity words (obama, obamacar, socialist) -> evidence of
   topical bias, not deception cues. Currently framed positively; should be a limitation.
 
+## Progress (2026-08-23) — Phase 0 + Phase 1 done
+- Phase 0: branch `fix/label-and-metrics`; `requirements.txt` pinned from local env;
+  `artifacts/liar_utils.py` created (RANDOM_STATE=42, shared `load_and_label`/`evaluate_full`).
+- Phase 1 (I-1, I-2, I-4, I-5) fixed in `artifacts/baseline_pipeline_v2.ipynb` and
+  `artifacts/proposed_improvements_v2.ipynb` (both executed clean, outputs saved).
+  Corrected results in `artifacts/model_comparison_results_v2.csv`.
+  **Corrected headline: LR + Mutual Information, test macro-F1 = 0.619** (acc 0.622,
+  fake-class F1 0.587) — matches the Appendix's predicted honest range. All real models
+  beat both Dummy baselines. Original notebooks/CSV left untouched as the as-submitted
+  record. Full detail in `claude-workspace/ISSUE_PLAN.md` Phase 1 STATUS note.
+
 ## Open threads / next steps
-1. Fix label mapping (case-insensitive) and rerun full pipeline; report macro-F1 + per-class.
-2. Add majority-class + class-weighted baselines; report confusion matrices.
-3. Reconcile paper claims (metadata) with code, or actually implement metadata features.
-4. Ablation: text -> +metadata -> +feature selection -> +tuning, one metric throughout.
-5. Refresh related work; add a modern (BERT) reference point.
+1. ~~Fix label mapping (case-insensitive) and rerun full pipeline; report macro-F1 + per-class.~~ DONE
+2. ~~Add majority-class + class-weighted baselines; report confusion matrices.~~ DONE
+3. Reconcile paper claims (metadata) with code, or actually implement metadata features. (Phase 3, I-3 — gates the rest)
+4. Ablation: text -> +metadata -> +feature selection -> +tuning, one metric throughout. (Phase 2)
+5. Refresh related work; add a modern (BERT) reference point. (Phase 4)
 6. Consider revision-checklist document for the author.
+7. Statistical rigor (Phase 2, I-6): repeat over >=5 seeds, mean +/- std, significance test.
+8. Reproducibility harness (Phase 2, I-13): wrap TF-IDF -> SelectKBest -> model in a single
+   sklearn Pipeline per model so preprocessing is fit inside each CV fold structurally.

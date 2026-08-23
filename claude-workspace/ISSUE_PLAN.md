@@ -30,11 +30,11 @@ workshop venue where a rigorous, well-explained classical benchmark is a good fi
 
 | ID | Sev | Issue | Fix in phase |
 |----|-----|-------|--------------|
-| I-1 | 🔴 | Label-mapping bug (`FALSE`/`TRUE` uppercase) mislabels ~20% of data | P1 |
-| I-2 | 🔴 | Headline F1 is positive-class-only on an inflated majority → invalid | P1 |
+| I-1 | ✅🔴 | Label-mapping bug (`FALSE`/`TRUE` uppercase) mislabels ~20% of data | P1 — fixed |
+| I-2 | ✅🔴 | Headline F1 is positive-class-only on an inflated majority → invalid | P1 — fixed |
 | I-3 | 🔴 | Paper claims text+metadata feature space that the code never builds | P3 |
-| I-4 | 🟠 | Baseline (accuracy) vs proposed (F1) not comparable | P1 |
-| I-5 | 🟠 | No confusion matrix / per-class metrics / trivial baselines | P1 |
+| I-4 | ✅🟠 | Baseline (accuracy) vs proposed (F1) not comparable | P1 — fixed |
+| I-5 | ✅🟠 | No confusion matrix / per-class metrics / trivial baselines | P1 — fixed |
 | I-6 | 🟠 | Single run; no variance, CIs, or significance test | P2 |
 | I-7 | 🟠 | Feature-selection claim not isolated (no ablation) | P2 |
 | I-8 | 🟠 | Related work stops at 2020; no modern (transformer) reference point | P4 |
@@ -111,6 +111,22 @@ that single comparison is what makes the honest ~0.58 result meaningful.
 
 **Exit criterion for Phase 1:** a corrected results table (baseline + proposed + dummies),
 macro-F1 primary, with confusion matrices. This is the new factual core of the paper.
+
+**STATUS (2026-08-23): Phase 1 complete.** Implemented in `artifacts/liar_utils.py`
+(shared `load_and_label`, `evaluate_full`, `print_report`, `RANDOM_STATE=42`),
+`artifacts/baseline_pipeline_v2.ipynb`, and `artifacts/proposed_improvements_v2.ipynb`.
+Both notebooks executed cleanly end-to-end (`python3 -m nbconvert --execute`); merged
+table saved to `artifacts/model_comparison_results_v2.csv`. Corrected train class
+balance: 43.8% fake / 56.2% real (assertion guard in both notebooks enforces this).
+Best result: Logistic Regression + Mutual Information, test macro-F1 = 0.619 (test
+acc 0.622, fake-class P/R/F1 = 0.561/0.615/0.587) — in the honest ~0.58-0.62 range
+predicted in the Appendix, not the invalid buggy 0.87. Every real model clearly beats
+both Dummy baselines (most-frequent macro-F1 0.360, stratified 0.485), satisfying I-5.
+Baseline and proposed are now reported on the identical metric set (I-4). Original
+`baseline_pipeline_notebook.ipynb` / `proposed_improvements_notebook.ipynb` and
+`model_comparison_results.csv` were left untouched as the "as-submitted" record.
+Next: I-3 (Phase 3, metadata claim reconciliation) gates the rest per the critical
+path in §8.
 
 ---
 
