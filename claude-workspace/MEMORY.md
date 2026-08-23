@@ -68,14 +68,30 @@ _Re-read this at the start of each session. Append dated entries as work progres
   negative values that hard-fail MultinomialNB (`ValueError: Negative values`); use
   `alternate_sign=False` whenever hashed features feed into a Naive Bayes model.
 
+## Progress (2026-08-23, cont'd) — Phase 2 done
+- `artifacts/metadata_features.build_pipeline_transformer()` + new
+  `artifacts/ablation_v1.ipynb`: full `sklearn.Pipeline` (TF-IDF/one-hot/SelectKBest
+  fit inside each CV fold, not before it — I-13) running the ablation
+  text -> +metadata -> +feature selection (chi2 k=3000) -> +tuning, fixed model = LR.
+- `RUN.md` (repo root) documents the run order / reproduction steps for Phases 1-3.
+- **Important finding: the ablation's CV ranking and test ranking disagree.** CV says
+  stage 4 (+tuning) is best (0.621 mean macro-F1); on held-out test, stage 3
+  (+feature selection, untuned) is actually best (0.628) and stage 4 is worse
+  (0.623) — GridSearchCV picked `class_weight="balanced"` for a CV gain that didn't
+  generalize. McNemar's test: stage1-vs-stage3 IS significant (p=0.034); stage1-vs-
+  stage4 is NOT (p=0.58). **Recommend the paper cite stage 3, not stage 4, as the
+  headline result**, with the p-value stated explicitly — reporting stage 4 as "our
+  best model" would repeat the overclaiming pattern this whole review exists to fix.
+- Bootstrap 95% CI on stage 4 test macro-F1: [0.597, 0.649] (point estimate 0.623).
+
 ## Open threads / next steps
 1. ~~Fix label mapping (case-insensitive) and rerun full pipeline; report macro-F1 + per-class.~~ DONE
 2. ~~Add majority-class + class-weighted baselines; report confusion matrices.~~ DONE
 3. ~~Reconcile paper claims (metadata) with code, or actually implement metadata features.~~ DONE (Option A)
-4. Full ablation: text -> +metadata -> +feature selection -> +tuning, one metric throughout,
-   with seeds/variance (Phase 2). Phase 3 already gives the text vs. text+metadata step;
-   still need +feature selection (chi2/MI) applied ON TOP of text+metadata, and +tuning
-   variance across seeds.
+4. ~~Full ablation: text -> +metadata -> +feature selection -> +tuning, with CV variance
+   and significance testing.~~ DONE — see finding above. Phases 1-3 exit criteria all met;
+   next per the critical path (§8) is Phase 4 (positioning/related work) and Phase 6
+   (rewrite Results section to cite stage 3 + the significance caveat, not the old 0.87).
 5. Refresh related work; add a modern (BERT) reference point. (Phase 4)
 6. Consider revision-checklist document for the author.
 7. Statistical rigor (Phase 2, I-6): repeat over >=5 seeds, mean +/- std, significance test.

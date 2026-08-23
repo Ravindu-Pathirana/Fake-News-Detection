@@ -159,6 +159,36 @@ The code is not leaky today (TF-IDF/SelectKBest fit on train only; credit-count 
 excluded). Putting everything in a single `Pipeline` guarantees it stays clean when you
 refactor. **Do not** add the `*_counts` columns as features — they leak the label.
 
+**STATUS (2026-08-23): Phase 2 complete.** `artifacts/metadata_features.py` gained
+`build_pipeline_transformer()`, a `ColumnTransformer` combining TF-IDF text +
+optional metadata, for use as the first step of a real `sklearn.pipeline.Pipeline`
+(I-13) — TF-IDF vocabulary and one-hot categories are now fit *inside* each CV fold,
+not once on the whole train set before hyperparameter search. New
+`artifacts/ablation_v1.ipynb` implements the ablation (I-7) on a single fixed model
+(Logistic Regression, chosen for being the most consistent performer in Phases 1/3):
+
+| Stage | CV macro-F1 (mean ± std) | Test macro-F1 |
+|---|---|---|
+| 1. Text only | 0.585 ± 0.010 | 0.596 |
+| 2. + metadata | 0.608 ± 0.009 | 0.602 |
+| 3. + feature selection (chi2, k=3000) | 0.616 ± 0.012 | **0.628** |
+| 4. + tuning (GridSearchCV C/class_weight) | 0.621 ± 0.012 | 0.623 |
+
+**Key finding (I-6, statistical rigor):** stage 1 vs. stage 3 is significant
+(McNemar p=0.034) — metadata + feature selection produce a real, defensible
+improvement over text-only. Stage 1 vs. stage 4 (the CV-"best" tuned pipeline) is
+**not** significant (p=0.58): GridSearchCV picked `class_weight="balanced"` because
+it improved the CV estimate, but that shifted the precision/recall trade-off in a
+way that didn't generalize to test, actually *underperforming* the untuned stage 3.
+Bootstrap 95% CI on the final pipeline's test macro-F1: [0.597, 0.649] (n_boot=2000)
+— wide relative to the inter-stage gaps, consistent with the significance result.
+
+**Recommendation for the paper: report stage 3 (feature selection, no extra tuning
+beyond default LR) as the headline result, not stage 4**, and state the McNemar
+p-value explicitly rather than only the point estimate — this is exactly the kind of
+overclaim the paper needs to avoid (I-9). `RUN.md` (repo root) documents the full
+reproduction steps and run order for all Phase 1-3 notebooks (I-13 exit condition).
+
 ---
 
 ## Phase 3 — 🔴/🟠 Reconcile paper claims with code (I-3)

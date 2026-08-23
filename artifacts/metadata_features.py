@@ -29,7 +29,7 @@ Design notes (see ISSUE_PLAN.md Phase 3 for the full rationale):
 from scipy.sparse import csr_matrix, hstack
 from sklearn.compose import ColumnTransformer
 from sklearn.feature_extraction import FeatureHasher
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.preprocessing import OneHotEncoder
 
 METADATA_COLUMNS = ["Subject(s)", "Speaker's job title", "State", "Party", "Context"]
@@ -95,3 +95,32 @@ def build_metadata_features(train_df, valid_df, test_df, include_speaker=False):
 
 def combine_text_and_metadata(X_text, X_meta):
     return hstack([X_text, X_meta]).tocsr()
+
+
+def build_pipeline_transformer(use_metadata=True):
+    """A single flat ColumnTransformer combining TF-IDF text features with
+    optional metadata features, for use as the first step of a full
+    sklearn Pipeline (Phase 2, I-13). Unlike `build_metadata_features`
+    (which fits encoders once, outside of cross-validation), a Pipeline
+    built on top of this refits every encoder -- TF-IDF vocabulary
+    included -- inside each CV fold, so hyperparameter search can no
+    longer see fold-held-out vocabulary/categories.
+
+    Expects a DataFrame with a precomputed `clean_text` column (text
+    cleaning is deterministic and label-independent, so doing it once
+    outside the CV loop is not a leakage risk) plus the raw metadata
+    columns already filled via `_fillna_str`. Speaker is never included
+    here -- see the module docstring.
+    """
+    transformers = [
+        ("text", TfidfVectorizer(max_features=10000, ngram_range=(1, 2), min_df=2, max_df=0.9), "clean_text")
+    ]
+    if use_metadata:
+        transformers += [
+            ("subject", CountVectorizer(tokenizer=_split_subjects, lowercase=False, binary=True), "Subject(s)"),
+            ("party", OneHotEncoder(handle_unknown="ignore"), ["Party"]),
+            ("state", OneHotEncoder(handle_unknown="ignore", min_frequency=5), ["State"]),
+            ("job", OneHotEncoder(handle_unknown="ignore", min_frequency=5), ["Speaker's job title"]),
+            ("context", OneHotEncoder(handle_unknown="ignore", min_frequency=5), ["Context"]),
+        ]
+    return ColumnTransformer(transformers=transformers)
