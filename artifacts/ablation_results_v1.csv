@@ -1,0 +1,5 @@
+Stage,CV Macro-F1 Mean,CV Macro-F1 Std,Best Params
+1. Text only,0.5846910603149725,0.010251014217280915,
+2. + metadata,0.6075331928176169,0.008618583616325321,
+"3. + feature selection (chi2, k=3000)",0.6158105618607636,0.011846395688265168,
+4. + tuning,0.6206791284864824,0.012369893967731367,"{'clf__C': 1, 'clf__class_weight': 'balanced'}"

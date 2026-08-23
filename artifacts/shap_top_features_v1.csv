@@ -1,0 +1,1001 @@
+feature,raw_feature,mean_shap
+Party: democrat,party__Party_democrat,-0.0041935537
+says,text__say,-0.0037293264
+going,text__go,-0.00360334
+group,text__group,-0.0034149766
+Context: a chain email,context__Context_a chain email,-0.0025573585
+tom,text__tom,-0.0022917276
+barack,text__barack,-0.0022794104
+show,text__show,-0.0020619032
+rep,text__rep,-0.0017072441
+average,text__averag,-0.0014871499
+highest,text__highest,-0.0014253603
+commission,text__commiss,-0.0014067726
+hurt,text__hurt,-0.0012629163
+background,text__background,-0.0012524513
+stimulus,text__stimulu,-0.0012154602
+pick,text__pick,-0.0011451477
+americans,text__american,-0.0011321318
+modern,text__modern,-0.0010885647
+months,text__month,-0.0010821866
+nothing,text__noth,-0.0010029804
+benghazi,text__benghazi,-0.0009853924
+state,text__state,-0.0009819282
+day,text__day,-0.0009341374
+debt,text__debt,-0.0008613233
+every day,text__everi day,-0.0008487083
+religion,subject__religion,-0.0007853765
+Party: independent,party__Party_independent,-0.00077631196
+health,text__health,-0.00076330133
+State: Minnesota,state__State_Minnesota,-0.0007487733
+produce,text__produc,-0.0007206635
+clinton,text__clinton,-0.00067756645
+grown,text__grown,-0.0006752512
+obama,text__obama,-0.00066652446
+twenty,text__twenti,-0.00065941026
+georgia,text__georgia,-0.00065629045
+Context: a speech,context__Context_a speech,-0.00063400384
+State: Wisconsin,state__State_Wisconsin,-0.00061114115
+combined,text__combin,-0.0006057285
+attack,text__attack,-0.0005653057
+treatment,text__treatment,-0.0005534245
+barack obama,text__barack obama,-0.00049649534
+message-machine-2012,subject__message-machine-2012,-0.00049130403
+indiana,text__indiana,-0.0004455461
+every dollars,text__everi dollar,-0.00044256396
+scheme,text__scheme,-0.00043207384
+among,text__among,-0.0004259888
+appropriations,text__appropri,-0.00042168147
+cut tax,text__cut tax,-0.0004031948
+health care,text__health care,-0.00039819887
+candidates-biography,subject__candidates-biography,-0.0003864907
+obama percent,text__obama percent,-0.00038509234
+face,text__face,-0.0003829908
+department education,text__depart educ,-0.00038188626
+tripled,text__tripl,-0.00037142052
+Speaker's job title: Mayor of Milwaukee,job__Speaker's job title_Mayor of Milwaukee,-0.00036998242
+Speaker's job title: Social media posting,job__Speaker's job title_Social media posting,-0.00036160968
+white,text__white,-0.00035333555
+muslim,text__muslim,-0.00034870108
+foundation,text__foundat,-0.00034144425
+stadium,text__stadium,-0.0003380577
+medicare voucher,text__medicar voucher,-0.00033671982
+tried,text__tri,-0.0003346479
+four,text__four,-0.0003285808
+Speaker's job title: Political commentator,job__Speaker's job title_Political commentator,-0.00032802403
+seven year,text__seven year,-0.0003276118
+Speaker's job title: infrequent_sklearn,job__Speaker's job title_infrequent_sklearn,-0.00032051918
+told,text__told,-0.00030417446
+whether,text__whether,-0.00029730142
+gov scott,text__gov scott,-0.0002852049
+kids,text__kid,-0.0002840071
+debate,text__debat,-0.00028179237
+deciding,text__decid,-0.0002808488
+huckabee,text__huckabe,-0.00027957465
+economy,subject__economy,-0.0002715342
+security,text__secur,-0.00027078853
+Speaker's job title: New York Times columnist,job__Speaker's job title_New York Times columnist,-0.00026156876
+State: New York,state__State_New York,-0.00024751277
+nearly,text__nearli,-0.00024693058
+stimulus,subject__stimulus,-0.00024335574
+State: Texas,state__State_Texas,-0.00023867161
+since,text__sinc,-0.00023722161
+largest tax,text__largest tax,-0.00023193206
+says rep,text__say rep,-0.00022300414
+one time,text__one time,-0.000207011
+homosexuality,text__homosexu,-0.00019565049
+bureaucrats,text__bureaucrat,-0.00019494766
+says david,text__say david,-0.00018997234
+nuclear weapons,text__nuclear weapon,-0.00018973136
+cabinet,text__cabinet,-0.0001695406
+immigration,subject__immigration,-0.00016506352
+message-machine-2014,subject__message-machine-2014,-0.00016392698
+Speaker's job title: State Senate Minority Leader,job__Speaker's job title_State Senate Minority Leader,-0.00016371105
+Context: a Facebook post,context__Context_a Facebook post,-0.00015788007
+concealed,text__conceal,-0.0001554208
+cited,text__cite,-0.00015304811
+hikes,text__hike,-0.00014834187
+vetoed,text__veto,-0.00013827956
+State: Pennsylvania,state__State_Pennsylvania,-0.00013786666
+bottom,text__bottom,-0.00013571497
+State: Georgia,state__State_Georgia,-0.00013222419
+Context: an ad,context__Context_an ad,-0.00012929863
+fatalities,text__fatal,-0.00012813411
+lowest,text__lowest,-0.0001216378
+sex offenders,text__sex offend,-0.00011998635
+State: Florida,state__State_Florida,-0.00011106478
+criminal-justice,subject__criminal-justice,-0.0001107445
+fastest,text__fastest,-0.00010602688
+workers,subject__workers,-0.000105490646
+"Speaker's job title: President, Heritage Foundation","job__Speaker's job title_President, Heritage Foundation",-0.0001035455
+bathroom,text__bathroom,-0.00010043801
+isis,text__isi,-9.9336656e-05
+Speaker's job title: Consultant,job__Speaker's job title_Consultant,-9.786419e-05
+bipartisanship,subject__bipartisanship,-9.6010095e-05
+Context: an interview on MSNBC,context__Context_an interview on MSNBC,-9.4972034e-05
+crime,subject__crime,-9.400054e-05
+medicare,subject__medicare,-9.300475e-05
+nuclear,subject__nuclear,-9.210614e-05
+Context: a speech at the Democratic convention,context__Context_a speech at the Democratic convention,-9.132604e-05
+bulbs,text__bulb,-8.855919e-05
+davis,text__davi,-8.774602e-05
+shutdown,text__shutdown,-8.485134e-05
+Context: a news conference,context__Context_a news conference,-7.606254e-05
+State: unknown,state__State_unknown,-7.579288e-05
+tax rate,text__tax rate,-7.306226e-05
+genetically,text__genet,-7.2765404e-05
+shes,text__she,-7.03989e-05
+kidnapping,text__kidnap,-6.987262e-05
+outside,text__outsid,-6.786596e-05
+terrorism,subject__terrorism,-6.691433e-05
+Speaker's job title: U.S. Senator,job__Speaker's job title_U.S. Senator,-6.434829e-05
+cap,text__cap,-6.172878e-05
+enough,text__enough,-5.8174744e-05
+Speaker's job title: U.S. representative,job__Speaker's job title_U.S. representative,-5.599904e-05
+common core,text__common core,-5.5389773e-05
+united,text__unit,-5.2277897e-05
+Speaker's job title: Representative,job__Speaker's job title_Representative,-5.1933297e-05
+transit,text__transit,-5.1402974e-05
+wisconsin gov,text__wisconsin gov,-4.8405338e-05
+mccain voted,text__mccain vote,-4.6832578e-05
+percent percent,text__percent percent,-4.464213e-05
+patients,text__patient,-4.3713128e-05
+row,text__row,-4.048585e-05
+government run,text__govern run,-3.5344514e-05
+voting-record,subject__voting-record,-3.504958e-05
+josh,text__josh,-3.454223e-05
+dollars spent,text__dollar spent,-3.2120246e-05
+charter,text__charter,-2.9936095e-05
+socialists,text__socialist,-2.9231265e-05
+state wisconsin,text__state wisconsin,-2.5033845e-05
+victory,text__victori,-2.2977822e-05
+sen sherrod,text__sen sherrod,-2.234592e-05
+Context: Denver,context__Context_Denver,-2.027383e-05
+Speaker's job title: Secretary of State,job__Speaker's job title_Secretary of State,-1.7839446e-05
+firearms,text__firearm,-1.4515255e-05
+tenure,text__tenur,-1.2218192e-05
+focused,text__focus,-1.1044525e-05
+funding education,text__fund educ,-1.0915551e-05
+supreme-court,subject__supreme-court,-8.886887e-06
+wisconsin supreme,text__wisconsin suprem,-4.7723283e-06
+warming,text__warm,-4.7359645e-06
+State: Oregon,state__State_Oregon,-4.1176136e-06
+raid,text__raid,-3.8582903e-06
+romney said,text__romney said,-1.849962e-06
+national average,text__nation averag,-1.5357191e-06
+Speaker's job title: Senator,job__Speaker's job title_Senator,-4.7756856e-07
+takeover,text__takeov,0.0
+rico,text__rico,0.0
+right choose,text__right choos,0.0
+rise cost,text__rise cost,0.0
+voted tax,text__vote tax,0.0
+voted plan,text__vote plan,0.0
+rob cornilles,text__rob cornil,0.0
+voted obamacare,text__vote obamacar,0.0
+voted billion,text__vote billion,0.0
+robert,text__robert,0.0
+robert hurt,text__robert hurt,0.0
+rules filibuster,text__rule filibust,0.0
+rush limbaugh,text__rush limbaugh,0.0
+said unemployment,text__said unemploy,0.0
+richest,text__richest,0.0
+sanders voted,text__sander vote,0.0
+vice,text__vice,0.0
+says billion,text__say billion,0.0
+says cant,text__say cant,0.0
+vet people,text__vet peopl,0.0
+vacation,text__vacat,0.0
+says could,text__say could,0.0
+says didnt,text__say didnt,0.0
+says hillary,text__say hillari,0.0
+va,text__va,0.0
+says july,text__say juli,0.0
+says many,text__say mani,0.0
+says michelle,text__say michel,0.0
+uranium,text__uranium,0.0
+says plan,text__say plan,0.0
+sarah palin,text__sarah palin,0.0
+rhode island,text__rhode island,0.0
+voted twice,text__vote twice,0.0
+rhode,text__rhode,0.0
+rate world,text__rate world,0.0
+wind power,text__wind power,0.0
+wilson,text__wilson,0.0
+wild,text__wild,0.0
+rate year,text__rate year,0.0
+whether support,text__whether support,0.0
+ration,text__ration,0.0
+wendy davis,text__wendi davi,0.0
+ration care,text__ration care,0.0
+wealth bottom,text__wealth bottom,0.0
+wealth,text__wealth,0.0
+waterboarding,text__waterboard,0.0
+Context: the vice presidential debate,context__Context_the vice presidential debate,0.0
+reining,text__rein,0.0
+unlawful,text__unlaw,0.0
+war iraq,text__war iraq,0.0
+rep tammy,text__rep tammi,0.0
+war ii,text__war ii,0.0
+war coal,text__war coal,0.0
+wants raise,text__want rais,0.0
+walker wisconsin,text__walker wisconsin,0.0
+repeal,text__repeal,0.0
+repeal th,text__repeal th,0.0
+republican governor,text__republican governor,0.0
+rescue,text__rescu,0.0
+rest,text__rest,0.0
+walker took,text__walker took,0.0
+walker said,text__walker said,0.0
+revoked,text__revok,0.0
+wage increase,text__wage increas,0.0
+relatively,text__rel,0.0
+says political,text__say polit,0.0
+school graduation,text__school graduat,0.0
+united state,text__unit state,0.0
+sonia sotomayor,text__sonia sotomayor,0.0
+soon,text__soon,0.0
+soros,text__soro,0.0
+spending percent,text__spend percent,0.0
+spike,text__spike,0.0
+started percent,text__start percent,0.0
+toilet,text__toilet,0.0
+state parks,text__state park,0.0
+still get,text__still get,0.0
+stimulus created,text__stimulu creat,0.0
+stop look,text__stop look,0.0
+tiny,text__tini,0.0
+threat,text__threat,0.0
+texas ranks,text__texa rank,0.0
+subpoenaed,text__subpoena,0.0
+sudden,text__sudden,0.0
+texas railroad,text__texa railroad,0.0
+texas public,text__texa public,0.0
+texas last,text__texa last,0.0
+texas abortion,text__texa abort,0.0
+terry mcauliffe,text__terri mcauliff,0.0
+support billion,text__support billion,0.0
+support obama,text__support obama,0.0
+teach,text__teach,0.0
+tea party,text__tea parti,0.0
+surgeries,text__surgeri,0.0
+takeover health,text__takeov health,0.0
+sutton,text__sutton,0.0
+swapped,text__swap,0.0
+top five,text__top five,0.0
+sonia,text__sonia,0.0
+socialists openly,text__socialist openli,0.0
+torture,text__tortur,0.0
+school state,text__school state,0.0
+screaming,text__scream,0.0
+sean,text__sean,0.0
+sean duffy,text__sean duffi,0.0
+security benefits,text__secur benefit,0.0
+uninsured americans,text__uninsur american,0.0
+unemployment number,text__unemploy number,0.0
+two decade,text__two decad,0.0
+security border,text__secur border,0.0
+twice many,text__twice mani,0.0
+security medicare,text__secur medicar,0.0
+tweeted,text__tweet,0.0
+turnout,text__turnout,0.0
+turned medicare,text__turn medicar,0.0
+take care,text__take care,0.0
+turbines,text__turbin,0.0
+sell house,text__sell hous,0.0
+sen mark,text__sen mark,0.0
+seniors,text__senior,0.0
+serving congress,text__serv congress,0.0
+show wisconsin,text__show wisconsin,0.0
+sic,text__sic,0.0
+sidewalks,text__sidewalk,0.0
+single day,text__singl day,0.0
+slush,text__slush,0.0
+slush funding,text__slush fund,0.0
+transactions,text__transact,0.0
+trade plan,text__trade plan,0.0
+sneeze,text__sneez,0.0
+social science,text__social scienc,0.0
+segregated,text__segreg,0.0
+record funding,text__record fund,0.0
+patriotism,subject__patriotism,0.0
+wisconsinites,text__wisconsinit,0.0
+Context: a campaign press release,context__Context_a campaign press release,0.0
+Context: a campaign statement,context__Context_a campaign statement,0.0
+Context: a campaign video,context__Context_a campaign video,0.0
+Context: a campaign website,context__Context_a campaign website,0.0
+Context: a flier,context__Context_a flier,0.0
+Context: a letter,context__Context_a letter,0.0
+Context: a meeting,context__Context_a meeting,0.0
+Context: a meme on social media,context__Context_a meme on social media,0.0
+Context: a message on Twitter,context__Context_a message on Twitter,0.0
+Context: a campaign news release,context__Context_a campaign news release,0.0
+Context: a message via the Internet,context__Context_a message via the Internet,0.0
+Context: a newsletter.,context__Context_a newsletter.,0.0
+Context: a newspaper ad,context__Context_a newspaper ad,0.0
+Context: a newspaper commentary,context__Context_a newspaper commentary,0.0
+Context: a post on Medium,context__Context_a post on Medium,0.0
+Context: a press release,context__Context_a press release,0.0
+Context: a press release.,context__Context_a press release.,0.0
+Context: a radio ad,context__Context_a radio ad,0.0
+Context: a radio ad.,context__Context_a radio ad.,0.0
+Context: a radio interview.,context__Context_a radio interview.,0.0
+Context: a newsletter,context__Context_a newsletter,0.0
+Context: a speech at the CPAC conference,context__Context_a speech at the CPAC conference,0.0
+Context: a campaign email,context__Context_a campaign email,0.0
+Context: a book,context__Context_a book,0.0
+Speaker's job title: Texas congressman in the U.S. Houst of Representatives,job__Speaker's job title_Texas congressman in the U.S. Houst of Representatives,0.0
+Speaker's job title: U.S. House member,job__Speaker's job title_U.S. House member,0.0
+"Speaker's job title: U.S. representative, Florida District 22","job__Speaker's job title_U.S. representative, Florida District 22",0.0
+Speaker's job title: advocacy group,job__Speaker's job title_advocacy group,0.0
+Speaker's job title: congressman,job__Speaker's job title_congressman,0.0
+Speaker's job title: former president,job__Speaker's job title_former president,0.0
+Speaker's job title: former senator,job__Speaker's job title_former senator,0.0
+"Speaker's job title: owner, Media-Rite LLC","job__Speaker's job title_owner, Media-Rite LLC",0.0
+Speaker's job title: political consultant,job__Speaker's job title_political consultant,0.0
+Context: a campaign commerical,context__Context_a campaign commerical,0.0
+Speaker's job title: state agriculture commissioner,job__Speaker's job title_state agriculture commissioner,0.0
+"Context: St. Paul, Minn.","context__Context_St. Paul, Minn.",0.0
+Context: a House committee hearing,context__Context_a House committee hearing,0.0
+Context: a House floor speech,context__Context_a House floor speech,0.0
+"Context: a Republican presidential debate in Boulder, Colo.","context__Context_a Republican presidential debate in Boulder, Colo.",0.0
+Context: a Republican presidential primary debate,context__Context_a Republican presidential primary debate,0.0
+Context: a TV ad airing in Iowa and New Hampshire.,context__Context_a TV ad airing in Iowa and New Hampshire.,0.0
+Context: a Twitter post,context__Context_a Twitter post,0.0
+Context: a YouTube video,context__Context_a YouTube video,0.0
+Context: a blog post,context__Context_a blog post,0.0
+Speaker's job title: writer,job__Speaker's job title_writer,0.0
+Speaker's job title: Talk-show host,job__Speaker's job title_Talk-show host,0.0
+Context: a speech at the Democratic National Convention,context__Context_a speech at the Democratic National Convention,0.0
+Context: a speech at the Republican National Convention in Tampa,context__Context_a speech at the Republican National Convention in Tampa,0.0
+"Context: an interview on CNN's ""New Day""","context__Context_an interview on CNN's ""New Day""",0.0
+Context: an interview on Fox,context__Context_an interview on Fox,0.0
+"Context: an interview on NBC's ""Today"" show","context__Context_an interview on NBC's ""Today"" show",0.0
+Context: an interview with MSNBC,context__Context_an interview with MSNBC,0.0
+Context: an online video,context__Context_an online video,0.0
+Context: an op-ed,context__Context_an op-ed,0.0
+Context: an op-ed.,context__Context_an op-ed.,0.0
+Context: an opinion article,context__Context_an opinion article,0.0
+Context: an opinion piece,context__Context_an opinion piece,0.0
+Context: an interview on CNN,context__Context_an interview on CNN,0.0
+Context: blog posts,context__Context_blog posts,0.0
+Context: comments on his radio show,context__Context_comments on his radio show,0.0
+Context: his State of the State address,context__Context_his State of the State address,0.0
+Context: his campaign website,context__Context_his campaign website,0.0
+Context: his presidential announcement speech,context__Context_his presidential announcement speech,0.0
+Context: his radio program,context__Context_his radio program,0.0
+Context: in a press release,context__Context_in a press release,0.0
+Context: posts on the Internet,context__Context_posts on the Internet,0.0
+Context: the State of the Union address,context__Context_the State of the Union address,0.0
+"Context: the third presidential debate in Boca Raton, Fla.","context__Context_the third presidential debate in Boca Raton, Fla.",0.0
+"Context: comments on CBS' ""Face the Nation""","context__Context_comments on CBS' ""Face the Nation""",0.0
+"Context: a speech at the Democratic National Convention in Charlotte, N.C.","context__Context_a speech at the Democratic National Convention in Charlotte, N.C.",0.0
+"Context: an interview on CBS' ""Face the Nation""","context__Context_an interview on CBS' ""Face the Nation""",0.0
+"Context: an interview on ABC's ""This Week""","context__Context_an interview on ABC's ""This Week""",0.0
+Context: a speech in the House of Representatives,context__Context_a speech in the House of Representatives,0.0
+Context: a speech on the floor of the U.S. Senate,context__Context_a speech on the floor of the U.S. Senate,0.0
+Context: a statement,context__Context_a statement,0.0
+Context: a statement at a candidate forum,context__Context_a statement at a candidate forum,0.0
+Context: a statement posted to his website,context__Context_a statement posted to his website,0.0
+Context: a television ad.,context__Context_a television ad.,0.0
+Context: a television advertisement,context__Context_a television advertisement,0.0
+Context: a town hall meeting,context__Context_a town hall meeting,0.0
+Context: a video ad,context__Context_a video ad,0.0
+Context: an interview on ABC's This Week,context__Context_an interview on ABC's This Week,0.0
+Context: a web ad,context__Context_a web ad,0.0
+Context: a website post.,context__Context_a website post.,0.0
+Context: a website posting,context__Context_a website posting,0.0
+Context: an article,context__Context_an article,0.0
+Context: an e-mail,context__Context_an e-mail,0.0
+Context: an e-mail message,context__Context_an e-mail message,0.0
+Context: an email,context__Context_an email,0.0
+"Context: an interview on ""This Week with Christiane Amanpour.""","context__Context_an interview on ""This Week with Christiane Amanpour.""",0.0
+"Context: an interview on ""This Week.""","context__Context_an interview on ""This Week.""",0.0
+"Context: an interview on ABC's ""This Week with Christiane Amanpour""","context__Context_an interview on ABC's ""This Week with Christiane Amanpour""",0.0
+Context: a web video,context__Context_a web video,0.0
+Speaker's job title: State senator,job__Speaker's job title_State senator,0.0
+Speaker's job title: State delegate,job__Speaker's job title_State delegate,0.0
+"Speaker's job title: State Senator, 20th District","job__Speaker's job title_State Senator, 20th District",0.0
+infrastructure,subject__infrastructure,0.0
+iraq,subject__iraq,0.0
+israel,subject__israel,0.0
+oil-spill,subject__oil-spill,0.0
+rate since,text__rate sinc,0.0
+pensions,subject__pensions,0.0
+population,subject__population,0.0
+public-safety,subject__public-safety,0.0
+states,subject__states,0.0
+housing,subject__housing,0.0
+unions,subject__unions,0.0
+wealth,subject__wealth,0.0
+Party: education-official,party__Party_education-official,0.0
+Party: libertarian,party__Party_libertarian,0.0
+Party: newsmaker,party__Party_newsmaker,0.0
+Party: organization,party__Party_organization,0.0
+Party: talk-show-host,party__Party_talk-show-host,0.0
+Party: unknown,party__Party_unknown,0.0
+State: Alaska,state__State_Alaska,0.0
+State: California,state__State_California,0.0
+unknown,subject__unknown,0.0
+State: Colorado,state__State_Colorado,0.0
+guns,subject__guns,0.0
+fake-news,subject__fake-news,0.0
+without background,text__without background,0.0
+work families,text__work famili,0.0
+work private,text__work privat,0.0
+would eliminate,text__would elimin,0.0
+year health,text__year health,0.0
+youd,text__youd,0.0
+young adults,text__young adult,0.0
+zero jobs,text__zero job,0.0
+10-news-tampa-bay,subject__10-news-tampa-bay,0.0
+florida-amendments,subject__florida-amendments,0.0
+afghanistan,subject__afghanistan,0.0
+baseball,subject__baseball,0.0
+cap-and-trade,subject__cap-and-trade,0.0
+congressional-rules,subject__congressional-rules,0.0
+consumer-safety,subject__consumer-safety,0.0
+corporations,subject__corporations,0.0
+debt,subject__debt,0.0
+deficit,subject__deficit,0.0
+drugs,subject__drugs,0.0
+ebola,subject__ebola,0.0
+bankruptcy,subject__bankruptcy,0.0
+State: Connecticut,state__State_Connecticut,0.0
+State: Delaware,state__State_Delaware,0.0
+State: Georgia ,state__State_Georgia ,0.0
+Speaker's job title: Governor of North Carolina,job__Speaker's job title_Governor of North Carolina,0.0
+"Speaker's job title: Governor of Ohio as of Jan. 10, 2011","job__Speaker's job title_Governor of Ohio as of Jan. 10, 2011",0.0
+Speaker's job title: Governor of Oregon,job__Speaker's job title_Governor of Oregon,0.0
+"Speaker's job title: Host, Last Week Tonight","job__Speaker's job title_Host, Last Week Tonight",0.0
+Speaker's job title: Lieutenant governor,job__Speaker's job title_Lieutenant governor,0.0
+Speaker's job title: Lieutenant governor-elect,job__Speaker's job title_Lieutenant governor-elect,0.0
+Speaker's job title: MSNBC political reporter,job__Speaker's job title_MSNBC political reporter,0.0
+Speaker's job title: Maryland governor,job__Speaker's job title_Maryland governor,0.0
+"Speaker's job title: Mayor, San Antonio","job__Speaker's job title_Mayor, San Antonio",0.0
+"Speaker's job title: Founder, The Huffington Post","job__Speaker's job title_Founder, The Huffington Post",0.0
+"Speaker's job title: Mayor, St. Petersburg","job__Speaker's job title_Mayor, St. Petersburg",0.0
+"Speaker's job title: NPR contributor, ABC commentator","job__Speaker's job title_NPR contributor, ABC commentator",0.0
+Speaker's job title: Physician,job__Speaker's job title_Physician,0.0
+Speaker's job title: Political action committee,job__Speaker's job title_Political action committee,0.0
+Speaker's job title: Political commentator and radio talk show host,job__Speaker's job title_Political commentator and radio talk show host,0.0
+Speaker's job title: Radio talk show host,job__Speaker's job title_Radio talk show host,0.0
+Speaker's job title: Representative from Ohio's 11th Congressional District,job__Speaker's job title_Representative from Ohio's 11th Congressional District,0.0
+Speaker's job title: Representative from Ohio's Ninth Congressional District,job__Speaker's job title_Representative from Ohio's Ninth Congressional District,0.0
+Speaker's job title: Republican Party of Florida Chairman,job__Speaker's job title_Republican Party of Florida Chairman,0.0
+Speaker's job title: Republican nominee for Nevada U.S. Senate seat,job__Speaker's job title_Republican nominee for Nevada U.S. Senate seat,0.0
+"Speaker's job title: Minority leader, House of Delegates","job__Speaker's job title_Minority leader, House of Delegates",0.0
+Speaker's job title: Former legislator and U.S. House member,job__Speaker's job title_Former legislator and U.S. House member,0.0
+Speaker's job title: Former governor of Michigan,job__Speaker's job title_Former governor of Michigan,0.0
+Speaker's job title: Executive Councilor,job__Speaker's job title_Executive Councilor,0.0
+State: Indiana,state__State_Indiana,0.0
+State: Maryland,state__State_Maryland,0.0
+State: Massachusetts ,state__State_Massachusetts ,0.0
+State: Nevada,state__State_Nevada,0.0
+State: New Mexico,state__State_New Mexico,0.0
+State: North Carolina,state__State_North Carolina,0.0
+State: South Carolina,state__State_South Carolina,0.0
+State: Tennessee,state__State_Tennessee,0.0
+State: Vermont,state__State_Vermont,0.0
+State: Washington,state__State_Washington,0.0
+Speaker's job title: Advocacy group,job__Speaker's job title_Advocacy group,0.0
+Speaker's job title: Alaska Department of Public Resources commissioner,job__Speaker's job title_Alaska Department of Public Resources commissioner,0.0
+Speaker's job title: Austin mayor,job__Speaker's job title_Austin mayor,0.0
+Speaker's job title: Businessman,job__Speaker's job title_Businessman,0.0
+Speaker's job title: Candidate for U.S. Senate,job__Speaker's job title_Candidate for U.S. Senate,0.0
+Speaker's job title: Candidate for governor,job__Speaker's job title_Candidate for governor,0.0
+Speaker's job title: Chairman of the  Ohio Democratic Party,job__Speaker's job title_Chairman of the  Ohio Democratic Party,0.0
+"Speaker's job title: Co-host on CNN's ""Crossfire""","job__Speaker's job title_Co-host on CNN's ""Crossfire""",0.0
+Speaker's job title: Columnist and author,job__Speaker's job title_Columnist and author,0.0
+Speaker's job title: Congresswoman,job__Speaker's job title_Congresswoman,0.0
+Speaker's job title: Developer,job__Speaker's job title_Developer,0.0
+wisconsin senate,text__wisconsin senat,0.0
+rate national,text__rate nation,0.0
+Context: tweets,context__Context_tweets,0.0
+rate among,text__rate among,0.0
+ferguson,text__ferguson,0.0
+filibuster presidential,text__filibust presidenti,0.0
+first amendment,text__first amend,0.0
+fleet,text__fleet,0.0
+flopped abortion,text__flop abort,0.0
+florida ranks,text__florida rank,0.0
+forty,text__forti,0.0
+forty percent,text__forti percent,0.0
+four five,text__four five,0.0
+fellow democrats,text__fellow democrat,0.0
+france,text__franc,0.0
+free health,text__free health,0.0
+full effect,text__full effect,0.0
+funding government,text__fund govern,0.0
+funding obamacare,text__fund obamacar,0.0
+funding per,text__fund per,0.0
+gambling,text__gambl,0.0
+garden,text__garden,0.0
+gdp,text__gdp,0.0
+genocide,text__genocid,0.0
+free economy,text__free economi,0.0
+federal spending,text__feder spend,0.0
+federal bureaucrats,text__feder bureaucrat,0.0
+february,text__februari,0.0
+democrats plan,text__democrat plan,0.0
+denver,text__denver,0.0
+depicting,text__depict,0.0
+disarm,text__disarm,0.0
+dishonest,text__dishonest,0.0
+dismantle,text__dismantl,0.0
+dispute,text__disput,0.0
+dropout,text__dropout,0.0
+duffy,text__duffi,0.0
+earn,text__earn,0.0
+edition,text__edit,0.0
+education state,text__educ state,0.0
+eliminate department,text__elimin depart,0.0
+employees union,text__employe union,0.0
+enrichment,text__enrich,0.0
+even support,text__even support,0.0
+event atlanta,text__event atlanta,0.0
+expected created,text__expect creat,0.0
+expenditures,text__expenditur,0.0
+expire,text__expir,0.0
+factually,text__factual,0.0
+george soros,text__georg soro,0.0
+democrats majority,text__democrat major,0.0
+georgians,text__georgian,0.0
+going war,text__go war,0.0
+income families,text__incom famili,0.0
+income inequality,text__incom inequ,0.0
+india,text__india,0.0
+injected,text__inject,0.0
+inner,text__inner,0.0
+inner city,text__inner citi,0.0
+interior,text__interior,0.0
+invaded,text__invad,0.0
+irs,text__ir,0.0
+inches away,text__inch away,0.0
+iran deal,text__iran deal,0.0
+island,text__island,0.0
+jack,text__jack,0.0
+jackson,text__jackson,0.0
+jan,text__jan,0.0
+jason,text__jason,0.0
+jason kander,text__jason kander,0.0
+jews,text__jew,0.0
+jewish,text__jewish,0.0
+jobs today,text__job today,0.0
+islamic state,text__islam state,0.0
+incarceration rate,text__incarcer rate,0.0
+image,text__imag,0.0
+hussein obama,text__hussein obama,0.0
+gonna,text__gonna,0.0
+got paid,text__got paid,0.0
+government send,text__govern send,0.0
+government take,text__govern take,0.0
+government takeover,text__govern takeov,0.0
+greece,text__greec,0.0
+grown percent,text__grown percent,0.0
+gunfire,text__gunfir,0.0
+gwinnett,text__gwinnett,0.0
+half million,text__half million,0.0
+half year,text__half year,0.0
+hall,text__hall,0.0
+harvey,text__harvey,0.0
+rate highest,text__rate highest,0.0
+heres,text__here,0.0
+high school,text__high school,0.0
+highest corporate,text__highest corpor,0.0
+hillary clinton,text__hillari clinton,0.0
+house bill,text__hous bill,0.0
+hpv,text__hpv,0.0
+hussein,text__hussein,0.0
+gerald daugherty,text__gerald daugherti,0.0
+john barrow,text__john barrow,0.0
+dekalb,text__dekalb,0.0
+december,text__decemb,0.0
+attracted,text__attract,0.0
+auditor,text__auditor,0.0
+auto companies,text__auto compani,0.0
+ayotte voted,text__ayott vote,0.0
+bachmann,text__bachmann,0.0
+bachmann said,text__bachmann said,0.0
+barack hussein,text__barack hussein,0.0
+became governor,text__becam governor,0.0
+began president,text__began presid,0.0
+apology tour,text__apolog tour,0.0
+behalf,text__behalf,0.0
+betty,text__betti,0.0
+betty sutton,text__betti sutton,0.0
+bid,text__bid,0.0
+bill ban,text__bill ban,0.0
+bill including,text__bill includ,0.0
+bill make,text__bill make,0.0
+birth certificate,text__birth certif,0.0
+black panther,text__black panther,0.0
+boccieri,text__boccieri,0.0
+benghazi attack,text__benghazi attack,0.0
+apology,text__apolog,0.0
+anywhere,text__anywher,0.0
+anytime,text__anytim,0.0
+abortion clinics,text__abort clinic,0.0
+abortion demand,text__abort demand,0.0
+abraham,text__abraham,0.0
+abraham lincoln,text__abraham lincoln,0.0
+account percent,text__account percent,0.0
+aclu,text__aclu,0.0
+added jobs,text__ad job,0.0
+administered,text__administ,0.0
+advisory,text__advisori,0.0
+advisory board,text__advisori board,0.0
+affairs,text__affair,0.0
+agenda,text__agenda,0.0
+ahead,text__ahead,0.0
+aircraft,text__aircraft,0.0
+almost doubled,text__almost doubl,0.0
+ambassador,text__ambassador,0.0
+americans killed,text__american kill,0.0
+americans men,text__american men,0.0
+americans support,text__american support,0.0
+americans work,text__american work,0.0
+among state,text__among state,0.0
+border fence,text__border fenc,0.0
+definition,text__definit,0.0
+bottom percent,text__bottom percent,0.0
+bring back,text__bring back,0.0
+controversial,text__controversi,0.0
+core,text__core,0.0
+cornilles,text__cornil,0.0
+corporate tax,text__corpor tax,0.0
+cost georgia,text__cost georgia,0.0
+could gotten,text__could gotten,0.0
+county residents,text__counti resid,0.0
+crackdown,text__crackdown,0.0
+created zero,text__creat zero,0.0
+congresswoman,text__congresswoman,0.0
+crippling,text__crippl,0.0
+cut back,text__cut back,0.0
+cut budget,text__cut budget,0.0
+cut deficit,text__cut deficit,0.0
+cut expire,text__cut expir,0.0
+cut millionaires,text__cut millionair,0.0
+dairy,text__dairi,0.0
+daugherty,text__daugherti,0.0
+de,text__de,0.0
+death penalty,text__death penalti,0.0
+cups,text__cup,0.0
+congress approved,text__congress approv,0.0
+college graduation,text__colleg graduat,0.0
+colleagues,text__colleagu,0.0
+broke,text__broke,0.0
+budget repair,text__budget repair,0.0
+build code,text__build code,0.0
+bureau labor,text__bureau labor,0.0
+bust,text__bust,0.0
+campuses,text__campus,0.0
+capital world,text__capit world,0.0
+capita health,text__capita health,0.0
+care decision,text__care decis,0.0
+casey,text__casey,0.0
+casino,text__casino,0.0
+cast deciding,text__cast decid,0.0
+cause million,text__caus million,0.0
+celebrates,text__celebr,0.0
+ceremony,text__ceremoni,0.0
+championship,text__championship,0.0
+charter school,text__charter school,0.0
+check,text__check,0.0
+class tax,text__class tax,0.0
+climbed,text__climb,0.0
+clinton says,text__clinton say,0.0
+breaks oil,text__break oil,0.0
+josh mandel,text__josh mandel,0.0
+heavily,text__heavili,0.0
+junket,text__junket,0.0
+martin,text__martin,0.0
+oil product,text__oil product,0.0
+one jobs,text__one job,0.0
+open border,text__open border,0.0
+openly,text__openli,0.0
+openly serving,text__openli serv,0.0
+opioid,text__opioid,0.0
+margaret,text__margaret,0.0
+outspent,text__outspent,0.0
+overstayed,text__overstay,0.0
+panther,text__panther,0.0
+obamacare cost,text__obamacar cost,0.0
+paperwork,text__paperwork,0.0
+party florida,text__parti florida,0.0
+passed obamacare,text__pass obamacar,0.0
+patrick,text__patrick,0.0
+patrick murphy,text__patrick murphi,0.0
+pay higher,text__pay higher,0.0
+pell grant,text__pell grant,0.0
+people employers,text__peopl employ,0.0
+people food,text__peopl food,0.0
+people going,text__peopl go,0.0
+made easier,text__made easier,0.0
+people lose,text__peopl lose,0.0
+parrish,text__parrish,0.0
+people went,text__peopl went,0.0
+obamacare become,text__obamacar becom,0.0
+obama policies,text__obama polici,0.0
+mom,text__mom,0.0
+money away,text__money away,0.0
+moratorium,text__moratorium,0.0
+michelle obama,text__michel obama,0.0
+michelle,text__michel,0.0
+mexican government,text__mexican govern,0.0
+mouse,text__mous,0.0
+movement,text__movement,0.0
+mercury,text__mercuri,0.0
+much per,text__much per,0.0
+museum,text__museum,0.0
+obama wants,text__obama want,0.0
+medicare know,text__medicar know,0.0
+medicare billion,text__medicar billion,0.0
+july parrish,text__juli parrish,0.0
+never work,text__never work,0.0
+new england,text__new england,0.0
+new private,text__new privat,0.0
+mccain said,text__mccain said,0.0
+newly,text__newli,0.0
+obama began,text__obama began,0.0
+marxist,text__marxist,0.0
+obama force,text__obama forc,0.0
+obama plan,text__obama plan,0.0
+nazi,text__nazi,0.0
+million new,text__million new,0.0
+percent country,text__percent countri,0.0
+lost health,text__lost health,0.0
+prices gasoline,text__price gasolin,0.0
+prince,text__princ,0.0
+private social,text__privat social,0.0
+proficiency,text__profici,0.0
+proposed mine,text__propos mine,0.0
+labor statistics,text__labor statist,0.0
+proposed rep,text__propos rep,0.0
+kuster,text__kuster,0.0
+kurt,text__kurt,0.0
+knew,text__knew,0.0
+puerto,text__puerto,0.0
+puerto rico,text__puerto rico,0.0
+klein,text__klein,0.0
+kidnapping capital,text__kidnap capit,0.0
+kenya,text__kenya,0.0
+racist,text__racist,0.0
+radical,text__radic,0.0
+ken cuccinelli,text__ken cuccinelli,0.0
+raise debt,text__rais debt,0.0
+ranks first,text__rank first,0.0
+ranks th,text__rank th,0.0
+rapists,text__rapist,0.0
+keep unemployment,text__keep unemploy,0.0
+kander,text__kander,0.0
+justin,text__justin,0.0
+presidential run,text__presidenti run,0.0
+percent electorate,text__percent elector,0.0
+president ronald,text__presid ronald,0.0
+president modern,text__presid modern,0.0
+percent gdp,text__percent gdp,0.0
+loophole,text__loophol,0.0
+percent hispanic,text__percent hispan,0.0
+live poverty,text__live poverti,0.0
+percent kids,text__percent kid,0.0
+limbaugh,text__limbaugh,0.0
+percent national,text__percent nation,0.0
+percent plan,text__percent plan,0.0
+light bulbs,text__light bulb,0.0
+photographs,text__photograph,0.0
+plan help,text__plan help,0.0
+last election,text__last elect,0.0
+liberal,text__liber,0.0
+plan raise,text__plan rais,0.0
+ponzi,text__ponzi,0.0
+lax,text__lax,0.0
+ponzi scheme,text__ponzi scheme,0.0
+law model,text__law model,0.0
+poverty rate,text__poverti rate,0.0
+last six,text__last six,0.0
+prayer,text__prayer,0.0
+prayer rugs,text__prayer rug,0.0
+last months,text__last month,0.0
+plan private,text__plan privat,0.0
+million children,text__million children,0.0
+climate-change,subject__climate-change,4.818812e-06
+Speaker's job title: U.S. senator from Ohio,job__Speaker's job title_U.S. senator from Ohio,6.2212075e-06
+time,text__time,6.67635e-06
+abolish,text__abolish,8.173459e-06
+Speaker's job title: Candidate for U.S. Senate and physician,job__Speaker's job title_Candidate for U.S. Senate and physician,9.46603e-06
+mental health,text__mental health,9.77954e-06
+ohio,text__ohio,1.0665205e-05
+State: Illinois,state__State_Illinois,1.1358727e-05
+says president,text__say presid,1.3815824e-05
+real,text__real,1.4436103e-05
+Party: none,party__Party_none,1.4668877e-05
+fortune,text__fortun,1.4730571e-05
+gone,text__gone,1.5009032e-05
+indicate,text__indic,1.7278402e-05
+treaty,text__treati,1.778488e-05
+social-security,subject__social-security,2.0231188e-05
+says ted,text__say ted,2.1288184e-05
+mcauliffe,text__mcauliff,2.2168324e-05
+poverty,subject__poverty,2.4873634e-05
+top,text__top,2.5990654e-05
+abc-news-week,subject__abc-news-week,2.7948377e-05
+majority americans,text__major american,3.0069106e-05
+oil gas,text__oil ga,3.028302e-05
+four time,text__four time,3.3212556e-05
+space,text__space,3.649673e-05
+income,text__incom,3.9806007e-05
+Speaker's job title: Actor,job__Speaker's job title_Actor,4.0055296e-05
+wage,text__wage,4.0458377e-05
+sector jobs,text__sector job,4.64231e-05
+nearly billion,text__nearli billion,5.0846236e-05
+graduation rate,text__graduat rate,5.4059095e-05
+income,subject__income,5.486843e-05
+almost,text__almost,5.566112e-05
+data,text__data,5.7929818e-05
+cap trade,text__cap trade,5.833734e-05
+bad,text__bad,5.9583628e-05
+option,text__option,6.0943086e-05
+taxpayers funding,text__taxpay fund,6.222673e-05
+take away,text__take away,6.329381e-05
+randi,text__randi,6.361561e-05
+could cost,text__could cost,6.570636e-05
+Context: a newspaper column,context__Context_a newspaper column,6.632398e-05
+wrote,text__wrote,6.7097586e-05
+president barack,text__presid barack,6.778033e-05
+lose health,text__lose health,7.316979e-05
+christian,text__christian,7.377963e-05
+corruption,text__corrupt,7.41695e-05
+blamed,text__blame,7.5060925e-05
+population growth,text__popul growth,7.550883e-05
+wendy,text__wendi,7.6027085e-05
+says democrats,text__say democrat,7.728896e-05
+Context: a campaign mailer,context__Context_a campaign mailer,8.3216975e-05
+Speaker's job title: U.S. Representative ,job__Speaker's job title_U.S. Representative ,8.436152e-05
+period,text__period,8.474847e-05
+foreign-policy,subject__foreign-policy,8.5978114e-05
+State: New Jersey,state__State_New Jersey,9.107287e-05
+lanes,text__lane,9.290929e-05
+china,subject__china,9.344255e-05
+last,text__last,0.00010016864
+Speaker's job title: Senate Democratic Leader,job__Speaker's job title_Senate Democratic Leader,0.0001004231
+terry,text__terri,0.00010073696
+incarceration,text__incarcer,0.00010238073
+stimulus bill,text__stimulu bill,0.00010374618
+Speaker's job title: Milwaukee County Sheriff,job__Speaker's job title_Milwaukee County Sheriff,0.00010525211
+Speaker's job title: Wisconsin Senate Minority Leader,job__Speaker's job title_Wisconsin Senate Minority Leader,0.00010749066
+nafta,text__nafta,0.00010794628
+increase history,text__increas histori,0.00010841768
+Context: a radio show,context__Context_a radio show,0.000112397414
+county-government,subject__county-government,0.000115221905
+make million,text__make million,0.00011644139
+history,subject__history,0.000121407546
+Speaker's job title: U.S. senator,job__Speaker's job title_U.S. senator,0.0001240982
+per students,text__per student,0.00012931679
+"Context: comments on CNN's ""State of the Union""","context__Context_comments on CNN's ""State of the Union""",0.00014259921
+never asked,text__never ask,0.00014418918
+pray,text__pray,0.00014420028
+ebola,text__ebola,0.00014451143
+obama-birth-certificate,subject__obama-birth-certificate,0.00014681081
+world,text__world,0.00014856
+everybody,text__everybodi,0.00016037507
+bill nelson,text__bill nelson,0.00016040594
+greater,text__greater,0.00016089795
+type,text__type,0.00016916516
+Context: a CNN interview,context__Context_a CNN interview,0.00016976974
+care law,text__care law,0.00017332303
+federal reserve,text__feder reserv,0.00019184257
+campaign-advertising,subject__campaign-advertising,0.00019340513
+tom barrett,text__tom barrett,0.00019445701
+says wisconsin,text__say wisconsin,0.00020050956
+team,text__team,0.00020095913
+cuccinelli,text__cuccinelli,0.00020574719
+border,text__border,0.0002140136
+top percent,text__top percent,0.00021574003
+tea,text__tea,0.00022904576
+State: Iowa,state__State_Iowa,0.00022972995
+worst,text__worst,0.00023154993
+middle class,text__middl class,0.00023369832
+percent time,text__percent time,0.0002361863
+accidents,text__accid,0.00023791283
+body,text__bodi,0.00023791479
+country,text__countri,0.0002380928
+percentage,text__percentag,0.00023861894
+white house,text__white hous,0.00024258187
+interview,text__interview,0.0002573295
+energy,subject__energy,0.00026426974
+manipulated,text__manipul,0.00026667296
+says barack,text__say barack,0.00026988253
+graduation,text__graduat,0.00027057322
+statewide,text__statewid,0.00027546502
+free,text__free,0.00028469178
+says gov,text__say gov,0.0002903784
+veterans,subject__veterans,0.00029113708
+doctors,text__doctor,0.00029539922
+education,text__educ,0.00030392845
+many people,text__mani peopl,0.00030796282
+christmas,text__christma,0.00031609202
+proves,text__prove,0.00032113626
+babies born,text__babi born,0.00032342627
+cut,text__cut,0.0003332012
+national,text__nation,0.0003401393
+federal-budget,subject__federal-budget,0.00034322284
+destroy,text__destroy,0.00035118396
+guess,text__guess,0.00035696995
+hillary,text__hillari,0.0003738734
+tax hikes,text__tax hike,0.00039060105
+deciding voted,text__decid vote,0.00040407933
+market-regulation,subject__market-regulation,0.00041510002
+less,text__less,0.00042107454
+medicare,text__medicar,0.00044395204
+Context: a campaign ad,context__Context_a campaign ad,0.00046935107
+youve,text__youv,0.00047238934
+islamic,text__islam,0.0004775737
+six,text__six,0.00048190216
+walker,text__walker,0.0004914743
+corporate,text__corpor,0.00049841846
+debunked,text__debunk,0.000534279
+gov,text__gov,0.0005345498
+th,text__th,0.0005383817
+poverty,text__poverti,0.0005491751
+still,text__still,0.00057776575
+story,text__stori,0.0006016548
+fix,text__fix,0.00060294545
+year,text__year,0.00061433594
+gambling,subject__gambling,0.0006255015
+frank,text__frank,0.0006560332
+Party: state-official,party__Party_state-official,0.000660461
+cicilline,text__cicillin,0.00066048454
+every,text__everi,0.0006623991
+released,text__releas,0.0006673917
+dont know,text__dont know,0.0006738803
+weve,text__weve,0.00067506166
+margin,text__margin,0.00067684834
+education,subject__education,0.0006783918
+ranks,text__rank,0.0007027249
+Context: a speech.,context__Context_a speech.,0.0007106562
+plan,text__plan,0.0007198214
+Speaker's job title: President,job__Speaker's job title_President,0.00073062215
+protesters,text__protest,0.00073139503
+illegal,text__illeg,0.000733984
+lower,text__lower,0.00079476467
+class,text__class,0.00081527873
+murphy,text__murphi,0.0008225297
+Speaker's job title: Presidential candidate,job__Speaker's job title_Presidential candidate,0.00087071565
+bar,text__bar,0.00088179903
+today,text__today,0.00088819425
+prices,text__price,0.0009552619
+Speaker's job title: Radio host,job__Speaker's job title_Radio host,0.0009781844
+government,text__govern,0.0009939513
+minimum wage,text__minimum wage,0.0010426415
+labor,subject__labor,0.0010946803
+Speaker's job title: unknown,job__Speaker's job title_unknown,0.0011090243
+president,text__presid,0.0011096944
+end medicare,text__end medicar,0.0011370735
+away,text__away,0.0011451114
+percent,text__percent,0.0011482604
+ken,text__ken,0.0011803209
+national debt,text__nation debt,0.001189911
+obamacare,text__obamacar,0.0012134458
+jobs,subject__jobs,0.0012540736
+three,text__three,0.0012981574
+rob,text__rob,0.0013820272
+care,text__care,0.0014171352
+college,text__colleg,0.0015246212
+Context: a chain e-mail,context__Context_a chain e-mail,0.0015820059
+social security,text__social secur,0.0016526019
+State: Ohio,state__State_Ohio,0.0017374239
+live,text__live,0.0017895009
+scott,text__scott,0.0017934905
+decade,text__decad,0.001809413
+scott walker,text__scott walker,0.0018994451
+spending,text__spend,0.0019226667
+Party: republican,party__Party_republican,0.0019776705
+health-care,subject__health-care,0.0020442822
+half,text__half,0.0020944548
+rate,text__rate,0.0023551947
+background check,text__background check,0.0025065548
+million,text__million,0.0027815555
+wisconsin,text__wisconsin,0.0029290873
+Speaker's job title: President-Elect,job__Speaker's job title_President-Elect,0.0031601386
+social,text__social,0.0033110213
+worth,text__worth,0.005787222

@@ -1,0 +1,20 @@
+pandas==2.3.3
+numpy==2.0.2
+scipy==1.13.1
+scikit-learn==1.6.1
+xgboost==2.1.4
+shap==0.49.1
+matplotlib==3.9.4
+seaborn==0.13.2
+nltk==3.9.2
+statsmodels==0.14.6
+jupyter==1.1.1
+notebook==7.5.1
+ipykernel==6.31.0
+
+# Phase 4 (I-8): DistilBERT reference baseline only -- not needed for the
+# classical-ML pipeline notebooks (Phases 0-3).
+torch==2.8.0
+transformers==4.57.6
+datasets==4.5.0
+accelerate==1.10.1
