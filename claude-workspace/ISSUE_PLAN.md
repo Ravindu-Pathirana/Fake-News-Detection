@@ -32,7 +32,7 @@ workshop venue where a rigorous, well-explained classical benchmark is a good fi
 |----|-----|-------|--------------|
 | I-1 | ✅🔴 | Label-mapping bug (`FALSE`/`TRUE` uppercase) mislabels ~20% of data | P1 — fixed |
 | I-2 | ✅🔴 | Headline F1 is positive-class-only on an inflated majority → invalid | P1 — fixed |
-| I-3 | 🔴 | Paper claims text+metadata feature space that the code never builds | P3 |
+| I-3 | ✅🔴 | Paper claims text+metadata feature space that the code never builds | P3 — fixed (Option A) |
 | I-4 | ✅🟠 | Baseline (accuracy) vs proposed (F1) not comparable | P1 — fixed |
 | I-5 | ✅🟠 | No confusion matrix / per-class metrics / trivial baselines | P1 — fixed |
 | I-6 | 🟠 | Single run; no variance, CIs, or significance test | P2 |
@@ -179,6 +179,34 @@ is an unsupported claim — a serious integrity issue.
 
 **Recommendation.** Option A if you have time (it gives you a real second contribution and a
 believable lift over text-only); otherwise Option B — never ship a claim the code doesn't do.
+
+**STATUS (2026-08-23): Phase 3 complete — Option A implemented.** New module
+`artifacts/metadata_features.py` builds the metadata feature space for real: `Subject(s)`
+multi-label binarized (142 tokens), `Party`/`State`/`Speaker's job title`/`Context`
+one-hot encoded (`handle_unknown="ignore"`, `min_frequency=5` on the high-cardinality
+ones), combined with the TF-IDF text matrix via `scipy.sparse.hstack`. The five
+`*_counts` columns are never touched. `Speaker` (2,910 unique values) is excluded by
+default per the leakage caution; when included it goes through a 64-dim
+`FeatureHasher` (`alternate_sign=False` — needed so `MultinomialNB`, which requires
+non-negative input, doesn't hard-fail) rather than raw one-hot, isolating its effect
+instead of giving the model a speaker-identity lookup table.
+
+New notebook `artifacts/proposed_with_metadata_v1.ipynb` reruns the same model set
+(LR/SVM/NB/RF/XGBoost, `GridSearchCV(scoring="f1_macro")`) on text+metadata and
+text+metadata+speaker, merges into `artifacts/model_comparison_results_v3_metadata.csv`
+alongside the Phase 1 text-only results.
+
+**Result: metadata gives a real, measurable lift.** Best text-only was LR+MI at
+macro-F1 0.619 (Phase 1). Best text+metadata (no speaker) is **Naive Bayes, macro-F1
+0.649** (test acc 0.660, fake-F1 0.586) — every model improves over its text-only
+counterpart. Adding hashed speaker on top does **not** help further (NB drops to
+0.643, mixed/flat elsewhere) — this is a genuine empirical finding, not just the
+theoretical leakage caution: speaker identity isn't earning its keep even in a
+collision-heavy hashed form, supporting dropping it from the paper's main pipeline
+and reporting this null result as evidence the model isn't relying on speaker
+memorization. The paper's text+metadata claim is now true of the code; Sec IV-B/IV-D
+numbers should be updated to cite Naive Bayes + text+metadata (0.649 macro-F1) as the
+new best result, with the speaker ablation reported as a limitations/robustness check.
 
 ---
 

@@ -50,11 +50,32 @@ _Re-read this at the start of each session. Append dated entries as work progres
   beat both Dummy baselines. Original notebooks/CSV left untouched as the as-submitted
   record. Full detail in `claude-workspace/ISSUE_PLAN.md` Phase 1 STATUS note.
 
+## Progress (2026-08-23, cont'd) — Phase 3 done (Option A)
+- `artifacts/metadata_features.py`: builds Subject(s)/Party/State/job/Context features
+  (multi-label + one-hot, min_frequency=5 on high-cardinality ones), excludes the leaky
+  `*_counts` columns, and hashes Speaker (64-dim FeatureHasher, alternate_sign=False)
+  instead of one-hotting it, gated behind `include_speaker`.
+- `artifacts/proposed_with_metadata_v1.ipynb`: reruns LR/SVM/NB/RF/XGBoost with
+  GridSearchCV(f1_macro) on text+metadata and text+metadata+speaker. Results merged
+  into `artifacts/model_comparison_results_v3_metadata.csv`.
+- **New best result: Naive Bayes + text+metadata (no speaker), test macro-F1 = 0.649**
+  (up from 0.619 text-only). Every model improved with metadata added.
+- **Speaker (hashed) does NOT help** — NB drops to 0.643 with it added, others flat/mixed.
+  This is a real empirical finding (not just a theoretical leakage worry): supports
+  dropping speaker from the paper's main pipeline and reporting the null result as a
+  robustness/limitations point.
+- Debug note for future runs: FeatureHasher's default `alternate_sign=True` produces
+  negative values that hard-fail MultinomialNB (`ValueError: Negative values`); use
+  `alternate_sign=False` whenever hashed features feed into a Naive Bayes model.
+
 ## Open threads / next steps
 1. ~~Fix label mapping (case-insensitive) and rerun full pipeline; report macro-F1 + per-class.~~ DONE
 2. ~~Add majority-class + class-weighted baselines; report confusion matrices.~~ DONE
-3. Reconcile paper claims (metadata) with code, or actually implement metadata features. (Phase 3, I-3 — gates the rest)
-4. Ablation: text -> +metadata -> +feature selection -> +tuning, one metric throughout. (Phase 2)
+3. ~~Reconcile paper claims (metadata) with code, or actually implement metadata features.~~ DONE (Option A)
+4. Full ablation: text -> +metadata -> +feature selection -> +tuning, one metric throughout,
+   with seeds/variance (Phase 2). Phase 3 already gives the text vs. text+metadata step;
+   still need +feature selection (chi2/MI) applied ON TOP of text+metadata, and +tuning
+   variance across seeds.
 5. Refresh related work; add a modern (BERT) reference point. (Phase 4)
 6. Consider revision-checklist document for the author.
 7. Statistical rigor (Phase 2, I-6): repeat over >=5 seeds, mean +/- std, significance test.
