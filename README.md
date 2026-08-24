@@ -10,7 +10,7 @@ This repository presents an Explainable Fake News Detection system developed usi
 	•	⚡ Advanced Models:
 	•	Naive Bayes (NB)
 	•	Random Forest (RF)
-	•	XGBoost (Best performing)
+	•	XGBoost
 	•	🧠 Feature Engineering:
 	•	TF-IDF (Unigrams + Bigrams)
 	•	Meta-data integration (speaker, party, context, etc.)
@@ -23,10 +23,16 @@ This repository presents an Explainable Fake News Detection system developed usi
 	
 📊 Results Summary
 
-	•	Best Model: XGBoost
-	•	Achieved F1-score up to 0.87
-	•	Feature selection significantly improved performance
-	•	Explainability analysis shows models rely on meaningful linguistic patterns  ￼
+	•	Best model (label-corrected, macro-F1): Naive Bayes on text + metadata, test macro-F1 = 0.649
+	•	Metric: macro-F1 is used throughout (not accuracy or positive-class F1), since the dataset is class-imbalanced
+	•	Adding metadata and Chi-square feature selection to Logistic Regression significantly improves over text-only (macro-F1 0.628 vs 0.596, McNemar p = 0.034); a further hyperparameter-tuning step does not generalize (p = 0.583)
+	•	Explainability analysis (SHAP) shows the model relies heavily on topical/entity features, including party affiliation -- reported as evidence of dataset-level topical bias, not of learned deception cues
+
+An earlier draft of this project reported an F1-score of 0.87, which was traced to a
+label-mapping bug (see `Fake-News-Detection/CLAUDE.md`); the corrected, honest
+performance range for LIAR-binary classification with classical models is macro-F1
+~0.60-0.65, which this project treats as a normal, reportable result rather than a
+shortfall.
 
 🧪 Dataset
 
@@ -50,12 +56,14 @@ This repository presents an Explainable Fake News Detection system developed usi
 	•	F1-score
 	6.	Explainability using SHAP
 
-🧠 Key Insights
+🧠 Key Insights (verified on corrected labels)
 
-	•	Feature selection is more important than model choice
-	•	Ensemble models outperform linear models
-	•	Mutual Information provides more stable results
-	•	Explainability improves trust in predictions  ￼
+	•	Metadata (subject/party/state/job/context) improves every model over its text-only counterpart; adding it produces the largest single gain in this study
+	•	Naive Bayes on text+metadata is the strongest configuration overall, ahead of Random Forest and XGBoost -- ensemble/tree models do not outperform simpler models here
+	•	Mutual Information selects better features than Chi-square for most models tested (4 of 5); the exception is SVM, where Chi-square scores slightly higher (0.594 vs 0.589 macro-F1)
+	•	Feature selection is fit inside every cross-validation fold (not once beforehand), so hyperparameter search never sees labels from its own held-out fold
+	•	A further hyperparameter-tuning step, despite looking best under cross-validation, does not produce a statistically significant gain on held-out test data (McNemar p = 0.583)
+	•	SHAP shows the model relies substantially on topical/entity/partisan features -- useful for auditing what the model actually keys on, not evidence the model detects deception
 
 🛠️ Tech Stack
 
