@@ -23,8 +23,9 @@ This repository presents an Explainable Fake News Detection system developed usi
 	
 📊 Results Summary
 
-	•	Best model (label-corrected, macro-F1): Naive Bayes on text + metadata, test macro-F1 = 0.649
+	•	Best model (label-corrected, macro-F1): Naive Bayes on text + metadata, test macro-F1 = 0.654
 	•	Metric: macro-F1 is used throughout (not accuracy or positive-class F1), since the dataset is class-imbalanced
+	•	Classical models are tuned by 5-fold cross-validation over the combined LIAR train+validation split (test is the only held-out data reported); the DistilBERT reference model instead follows the official train/validation/test split, so its training-data budget is not identical to the classical models'
 	•	Adding metadata and Chi-square feature selection to Logistic Regression significantly improves over text-only (macro-F1 0.628 vs 0.596, McNemar p = 0.034); a further hyperparameter-tuning step does not generalize (p = 0.583)
 	•	Explainability analysis (SHAP) shows the model relies heavily on topical/entity features, including party affiliation -- reported as evidence of dataset-level topical bias, not of learned deception cues
 
@@ -60,7 +61,7 @@ shortfall.
 
 	•	Metadata (subject/party/state/job/context) improves every model over its text-only counterpart; adding it produces the largest single gain in this study
 	•	Naive Bayes on text+metadata is the strongest configuration overall, ahead of Random Forest and XGBoost -- ensemble/tree models do not outperform simpler models here
-	•	Mutual Information selects better features than Chi-square for most models tested (4 of 5); the exception is SVM, where Chi-square scores slightly higher (0.594 vs 0.589 macro-F1)
+	•	Chi-square selects better features than Mutual Information for most models tested (3 of 5: Random Forest, SVM, XGBoost); Mutual Information is better for Logistic Regression (0.620 vs 0.615) and Naive Bayes (0.587 vs 0.582)
 	•	Feature selection is fit inside every cross-validation fold (not once beforehand), so hyperparameter search never sees labels from its own held-out fold
 	•	A further hyperparameter-tuning step, despite looking best under cross-validation, does not produce a statistically significant gain on held-out test data (McNemar p = 0.583)
 	•	SHAP shows the model relies substantially on topical/entity/partisan features -- useful for auditing what the model actually keys on, not evidence the model detects deception

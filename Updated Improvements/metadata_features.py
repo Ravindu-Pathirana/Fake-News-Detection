@@ -72,25 +72,27 @@ def _hash_speaker(df):
     return hasher.transform([[s] for s in df["Speaker"].fillna("unknown").astype(str)])
 
 
-def build_metadata_features(train_df, valid_df, test_df, include_speaker=False):
-    """Fit metadata encoders on train, transform all three splits, and
-    return (X_train_meta, X_valid_meta, X_test_meta, transformer)."""
+def build_metadata_features(train_df, test_df, include_speaker=False):
+    """Fit metadata encoders on train, transform test, and return
+    (X_train_meta, X_test_meta, transformer).
+
+    2026-08-24: dropped the separate `valid_df` argument -- callers now merge
+    train+valid into `train_df` themselves before calling this (see
+    claude-workspace/MEMORY.md), since valid was never used as a distinct
+    held-out split for any decision here."""
     cols_needed = METADATA_COLUMNS + (["Speaker"] if include_speaker else [])
     train_f = _fillna_str(train_df, [c for c in cols_needed if c != "Speaker"])
-    valid_f = _fillna_str(valid_df, [c for c in cols_needed if c != "Speaker"])
     test_f = _fillna_str(test_df, [c for c in cols_needed if c != "Speaker"])
 
     transformer = build_metadata_transformer()
     X_train_meta = transformer.fit_transform(train_f)
-    X_valid_meta = transformer.transform(valid_f)
     X_test_meta = transformer.transform(test_f)
 
     if include_speaker:
         X_train_meta = hstack([X_train_meta, _hash_speaker(train_df)]).tocsr()
-        X_valid_meta = hstack([X_valid_meta, _hash_speaker(valid_df)]).tocsr()
         X_test_meta = hstack([X_test_meta, _hash_speaker(test_df)]).tocsr()
 
-    return csr_matrix(X_train_meta), csr_matrix(X_valid_meta), csr_matrix(X_test_meta), transformer
+    return csr_matrix(X_train_meta), csr_matrix(X_test_meta), transformer
 
 
 def combine_text_and_metadata(X_text, X_meta):
