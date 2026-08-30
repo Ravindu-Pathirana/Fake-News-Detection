@@ -36,10 +36,47 @@ METADATA_COLUMNS = ["Subject(s)", "Speaker's job title", "State", "Party", "Cont
 SPEAKER_HASH_DIM = 64
 
 
-def _fillna_str(df, columns):
+def _build_canonical_categories(df, columns):
+    """Fit, per column, a mapping from a whitespace/case-insensitive key to
+    one canonical surface form (the most frequent stripped spelling in this
+    data). Computed on train only and reused to transform test, exactly like
+    the TF-IDF vocabulary and one-hot categories, so both splits agree on
+    which one-hot column a given raw value maps to.
+
+    Without this, raw metadata values that differ only by trailing
+    whitespace or case (e.g. 'Georgia' vs 'Georgia ', 'ohio' vs 'Ohio') were
+    one-hot encoded as separate columns, silently splitting one category's
+    signal in two. Genuine spelling/wording variants (e.g. 'a chain e-mail'
+    vs 'a chain email') are a different, free-text problem and are not
+    touched here -- merging those would require a hand-built alias table
+    rather than a mechanical, principled rule."""
+    canonical = {}
+    for c in columns:
+        stripped = df[c].fillna("unknown").astype(str).str.strip()
+        counts = stripped.value_counts()
+        col_map = {}
+        for val, cnt in counts.items():
+            key = val.casefold()
+            if key not in col_map or cnt > counts[col_map[key]]:
+                col_map[key] = val
+        canonical[c] = col_map
+    return canonical
+
+
+def _fillna_str(df, columns, canonical=None):
+    """Fill missing metadata values and strip whitespace. If `canonical`
+    (from `_build_canonical_categories`, fit on train) is given, also remap
+    whitespace/case-only duplicate categories to their shared canonical
+    spelling. A test-only value with no match in `canonical` (a category
+    unseen in train) is left as its own stripped form, which is exactly
+    what `OneHotEncoder(handle_unknown="ignore")` already expects."""
     df = df.copy()
     for c in columns:
-        df[c] = df[c].fillna("unknown").astype(str)
+        s = df[c].fillna("unknown").astype(str).str.strip()
+        if canonical is not None:
+            col_map = canonical[c]
+            s = s.map(lambda v: col_map.get(v.casefold(), v))
+        df[c] = s
     return df
 
 
@@ -81,8 +118,10 @@ def build_metadata_features(train_df, test_df, include_speaker=False):
     claude-workspace/MEMORY.md), since valid was never used as a distinct
     held-out split for any decision here."""
     cols_needed = METADATA_COLUMNS + (["Speaker"] if include_speaker else [])
-    train_f = _fillna_str(train_df, [c for c in cols_needed if c != "Speaker"])
-    test_f = _fillna_str(test_df, [c for c in cols_needed if c != "Speaker"])
+    non_speaker_cols = [c for c in cols_needed if c != "Speaker"]
+    canonical = _build_canonical_categories(train_df, non_speaker_cols)
+    train_f = _fillna_str(train_df, non_speaker_cols, canonical)
+    test_f = _fillna_str(test_df, non_speaker_cols, canonical)
 
     transformer = build_metadata_transformer()
     X_train_meta = transformer.fit_transform(train_f)
