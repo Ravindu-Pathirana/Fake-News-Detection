@@ -1,0 +1,6 @@
+model,config,mean_macro_f1,std_macro_f1,seeds,scores
+NB,text+metadata,0.6549000381325925,0.0,"[42, 1, 7, 13, 2024]","[np.float64(0.6549), np.float64(0.6549), np.float64(0.6549), np.float64(0.6549), np.float64(0.6549)]"
+LR,text+metadata,0.6228843596993092,0.0,"[42, 1, 7, 13, 2024]","[np.float64(0.622884), np.float64(0.622884), np.float64(0.622884), np.float64(0.622884), np.float64(0.622884)]"
+SVM,text+metadata,0.6219975116798699,0.0,"[42, 1, 7, 13, 2024]","[np.float64(0.621998), np.float64(0.621998), np.float64(0.621998), np.float64(0.621998), np.float64(0.621998)]"
+RF,text+metadata,0.6222558914815863,0.0033121419990246414,"[42, 1, 7, 13, 2024]","[np.float64(0.625566), np.float64(0.621795), np.float64(0.624163), np.float64(0.616087), np.float64(0.623668)]"
+XGBoost,text+metadata,0.6174056347757438,0.0,"[42, 1, 7, 13, 2024]","[np.float64(0.617406), np.float64(0.617406), np.float64(0.617406), np.float64(0.617406), np.float64(0.617406)]"
