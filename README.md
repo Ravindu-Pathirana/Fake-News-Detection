@@ -23,17 +23,19 @@ This repository presents an Explainable Fake News Detection system developed usi
 	
 📊 Results Summary
 
-	•	Best model (label-corrected, macro-F1): Naive Bayes on text + metadata, test macro-F1 = 0.654
+	•	Best model (label-corrected, macro-F1): Naive Bayes on text + metadata, test macro-F1 = 0.655
 	•	Metric: macro-F1 is used throughout (not accuracy or positive-class F1), since the dataset is class-imbalanced
 	•	Classical models are tuned by 5-fold cross-validation over the combined LIAR train+validation split (test is the only held-out data reported); the DistilBERT reference model instead follows the official train/validation/test split, so its training-data budget is not identical to the classical models'
-	•	Adding metadata and Chi-square feature selection to Logistic Regression significantly improves over text-only (macro-F1 0.628 vs 0.596, McNemar p = 0.034); a further hyperparameter-tuning step does not generalize (p = 0.583)
-	•	Explainability analysis (SHAP) shows the model relies heavily on topical/entity features, including party affiliation -- reported as evidence of dataset-level topical bias, not of learned deception cues
+	•	Correcting for multiple comparisons (Holm-Bonferroni, 15-comparison family): the previously reported Logistic Regression gain (0.630 vs 0.596 macro-F1) does *not* survive correction (p_holm = 0.38), but the actual best model's gain does -- Naive Bayes text+metadata vs text-only, 0.655 vs 0.604, p_holm = 0.045
+	•	Generalization audit: despite the LIAR split being 85.2% speaker-overlapping, the metadata gain survives speaker- and subject-disjoint evaluation (only a 0.01-0.03 macro-F1 gap vs a matched random-split control) -- a much larger, but base-rate-confounded, gap appears under a party-shift protocol
+	•	Explainability analysis (SHAP) shows the model relies heavily on topical/entity features, including party affiliation -- reported as evidence of dataset-level topical bias, not of learned deception cues; a speaker-disjoint SHAP check confirms this partisan signal is not simply speaker memorization
 
 An earlier draft of this project reported an F1-score of 0.87, which was traced to a
 label-mapping bug (see `Fake-News-Detection/CLAUDE.md`); the corrected, honest
 performance range for LIAR-binary classification with classical models is macro-F1
 ~0.60-0.65, which this project treats as a normal, reportable result rather than a
-shortfall.
+shortfall. The full generalization-audit and significance-correction writeup is in
+`claude-working-files/paper_icac2026.tex`.
 
 🧪 Dataset
 
@@ -63,7 +65,7 @@ shortfall.
 	•	Naive Bayes on text+metadata is the strongest configuration overall, ahead of Random Forest and XGBoost -- ensemble/tree models do not outperform simpler models here
 	•	Chi-square selects better features than Mutual Information for most models tested (3 of 5: Random Forest, SVM, XGBoost); Mutual Information is better for Logistic Regression (0.620 vs 0.615) and Naive Bayes (0.587 vs 0.582)
 	•	Feature selection is fit inside every cross-validation fold (not once beforehand), so hyperparameter search never sees labels from its own held-out fold
-	•	A further hyperparameter-tuning step, despite looking best under cross-validation, does not produce a statistically significant gain on held-out test data (McNemar p = 0.583)
+	•	A further hyperparameter-tuning step, despite looking best under cross-validation, does not produce a statistically significant gain on held-out test data (McNemar p = 0.663, raw); after correcting for the full family of significance comparisons this project makes, the feature-selection-stage gain itself (p_holm = 0.38) is not distinguishable from noise either -- it's the actual best model's (Naive Bayes) metadata gain that survives correction
 	•	SHAP shows the model relies substantially on topical/entity/partisan features -- useful for auditing what the model actually keys on, not evidence the model detects deception
 
 🛠️ Tech Stack
