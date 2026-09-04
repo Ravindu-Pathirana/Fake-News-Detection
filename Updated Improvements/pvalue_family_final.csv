@@ -1,0 +1,16 @@
+phase,comparison,statistic,p_raw,p_holm,significant
+R1,S2_metadata vs S3_feature_selection,9.14179104477612,0.0024983642015543,0.037475463023314504,True
+R1,NB_text_metadata vs NB_text_only,8.69433962264151,0.0031919974272122,0.0446879639809708,True
+R1,S3_feature_selection vs S4_tuning,4.925675675675675,0.026460452950271,0.343985888353523,False
+R1,S1_text_only vs S3_feature_selection,4.612099644128114,0.0317471395751563,0.3809656749018756,False
+R2,speaker_disjoint__LR_text_metadata__vs_matched_random,0.0,0.0625,0.6875,False
+R2,speaker_disjoint__NB_text_metadata__vs_matched_random,0.0,0.0625,0.6875,False
+R2,speaker_disjoint__LR_text_metadata_chi3000__vs_matched_random,0.0,0.0625,0.6875,False
+R2,subject_disjoint__NB_text_metadata__vs_matched_random,0.0,0.0625,0.6875,False
+R2,subject_disjoint__LR_text_only__vs_matched_random,1.0,0.125,0.875,False
+R2,subject_disjoint__LR_text_metadata__vs_matched_random,1.0,0.125,0.875,False
+R2,subject_disjoint__LR_text_metadata_chi3000__vs_matched_random,1.0,0.125,0.875,False
+R1,NB_text_metadata vs S3_feature_selection,2.1164021164021163,0.1457285332020363,0.875,False
+R2,speaker_disjoint__LR_text_only__vs_matched_random,3.0,0.3125,0.9375,False
+R1,S1_text_only vs S4_tuning,0.1899109792284866,0.6629907190483266,1.0,False
+R1,S1_text_only vs S2_metadata,0.0,1.0,1.0,False

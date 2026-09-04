@@ -1,0 +1,9 @@
+phase,comparison,statistic,p_raw
+R2,speaker_disjoint__LR_text_only__vs_matched_random,3.0,0.3125
+R2,speaker_disjoint__LR_text_metadata__vs_matched_random,0.0,0.0625
+R2,speaker_disjoint__NB_text_metadata__vs_matched_random,0.0,0.0625
+R2,speaker_disjoint__LR_text_metadata_chi3000__vs_matched_random,0.0,0.0625
+R2,subject_disjoint__LR_text_only__vs_matched_random,1.0,0.125
+R2,subject_disjoint__LR_text_metadata__vs_matched_random,1.0,0.125
+R2,subject_disjoint__NB_text_metadata__vs_matched_random,0.0,0.0625
+R2,subject_disjoint__LR_text_metadata_chi3000__vs_matched_random,1.0,0.125

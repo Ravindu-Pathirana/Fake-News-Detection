@@ -1,0 +1,2 @@
+test_speaker_in_train_valid_frac,unique_speakers_train_valid,unique_speakers_pooled,test_share_speaker_ge10_train_rows
+0.8524072612470402,3127,3310,0.5430149960536701
