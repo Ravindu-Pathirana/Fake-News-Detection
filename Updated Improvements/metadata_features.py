@@ -27,10 +27,11 @@ Design notes (see ISSUE_PLAN.md Phase 3 for the full rationale):
 """
 
 from scipy.sparse import csr_matrix, hstack
+from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.compose import ColumnTransformer
 from sklearn.feature_extraction import FeatureHasher
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import FunctionTransformer, OneHotEncoder
 
 METADATA_COLUMNS = ["Subject(s)", "Speaker's job title", "State", "Party", "Context"]
 SPEAKER_HASH_DIM = 64
@@ -84,22 +85,26 @@ def _split_subjects(text):
     return [s.strip() for s in text.split(",") if s.strip()]
 
 
-def build_metadata_transformer():
+def build_metadata_transformer(columns=METADATA_COLUMNS):
     """A ColumnTransformer over the non-leaking, non-identity metadata
-    columns. Fit on train only, like the TF-IDF vectorizer."""
+    columns. Fit on train only, like the TF-IDF vectorizer. `columns`
+    selects a subset of METADATA_COLUMNS (e.g. to ablate the job title,
+    camera-ready issue CR-5); the default is all five."""
+    unknown = set(columns) - set(METADATA_COLUMNS)
+    assert not unknown, f"Not metadata columns: {unknown}"
     subject_vectorizer = CountVectorizer(tokenizer=_split_subjects, lowercase=False, binary=True)
     low_card_ohe = OneHotEncoder(handle_unknown="ignore")
     high_card_ohe = OneHotEncoder(handle_unknown="ignore", min_frequency=5)
 
-    return ColumnTransformer(
-        transformers=[
-            ("subject", subject_vectorizer, "Subject(s)"),
-            ("party", low_card_ohe, ["Party"]),
-            ("state", high_card_ohe, ["State"]),
-            ("job", high_card_ohe, ["Speaker's job title"]),
-            ("context", high_card_ohe, ["Context"]),
-        ]
-    )
+    transformers = [
+        ("subject", subject_vectorizer, "Subject(s)"),
+        ("party", low_card_ohe, ["Party"]),
+        ("state", high_card_ohe, ["State"]),
+        ("job", high_card_ohe, ["Speaker's job title"]),
+        ("context", high_card_ohe, ["Context"]),
+    ]
+    source = {"subject": "Subject(s)", "party": "Party", "state": "State", "job": "Speaker's job title", "context": "Context"}
+    return ColumnTransformer(transformers=[t for t in transformers if source[t[0]] in columns])
 
 
 def _hash_speaker(df):
@@ -109,7 +114,7 @@ def _hash_speaker(df):
     return hasher.transform([[s] for s in df["Speaker"].fillna("unknown").astype(str)])
 
 
-def build_metadata_features(train_df, test_df, include_speaker=False):
+def build_metadata_features(train_df, test_df, include_speaker=False, columns=METADATA_COLUMNS):
     """Fit metadata encoders on train, transform test, and return
     (X_train_meta, X_test_meta, transformer).
 
@@ -117,13 +122,13 @@ def build_metadata_features(train_df, test_df, include_speaker=False):
     train+valid into `train_df` themselves before calling this (see
     claude-workspace/MEMORY.md), since valid was never used as a distinct
     held-out split for any decision here."""
-    cols_needed = METADATA_COLUMNS + (["Speaker"] if include_speaker else [])
+    cols_needed = list(columns) + (["Speaker"] if include_speaker else [])
     non_speaker_cols = [c for c in cols_needed if c != "Speaker"]
     canonical = _build_canonical_categories(train_df, non_speaker_cols)
     train_f = _fillna_str(train_df, non_speaker_cols, canonical)
     test_f = _fillna_str(test_df, non_speaker_cols, canonical)
 
-    transformer = build_metadata_transformer()
+    transformer = build_metadata_transformer(non_speaker_cols)
     X_train_meta = transformer.fit_transform(train_f)
     X_test_meta = transformer.transform(test_f)
 
@@ -138,7 +143,25 @@ def combine_text_and_metadata(X_text, X_meta):
     return hstack([X_text, X_meta]).tocsr()
 
 
-def build_pipeline_transformer(use_metadata=True):
+class MetadataCanonicalizer(BaseEstimator, TransformerMixin):
+    """Pipeline step version of `_build_canonical_categories` + `_fillna_str`:
+    fills missing metadata, strips whitespace and merges whitespace/case-only
+    duplicate categories, learning the canonical spellings in `fit`. Placed at
+    the start of a Pipeline, the spellings are learned inside every CV fold
+    instead of once on the whole training pool (camera-ready issue CR-7)."""
+
+    def __init__(self, columns=METADATA_COLUMNS):
+        self.columns = columns
+
+    def fit(self, X, y=None):
+        self.canonical_ = _build_canonical_categories(X, list(self.columns))
+        return self
+
+    def transform(self, X):
+        return _fillna_str(X, list(self.columns), self.canonical_)
+
+
+def build_pipeline_transformer(use_metadata=True, columns=METADATA_COLUMNS, include_speaker=False, use_text=True):
     """A single flat ColumnTransformer combining TF-IDF text features with
     optional metadata features, for use as the first step of a full
     sklearn Pipeline (Phase 2, I-13). Unlike `build_metadata_features`
@@ -150,18 +173,31 @@ def build_pipeline_transformer(use_metadata=True):
     Expects a DataFrame with a precomputed `clean_text` column (text
     cleaning is deterministic and label-independent, so doing it once
     outside the CV loop is not a leakage risk) plus the raw metadata
-    columns already filled via `_fillna_str`. Speaker is never included
-    here -- see the module docstring.
+    columns, already filled via `_fillna_str` or by a preceding
+    `MetadataCanonicalizer` step.
+
+    `columns` selects a subset of the metadata columns, `use_text=False`
+    drops the TF-IDF block (metadata-only baseline), and
+    `include_speaker=True` appends the 64-dim hashed speaker feature. The
+    defaults reproduce the original text + all-metadata transformer.
     """
-    transformers = [
-        ("text", TfidfVectorizer(max_features=10000, ngram_range=(1, 2), min_df=2, max_df=0.9), "clean_text")
-    ]
+    unknown = set(columns) - set(METADATA_COLUMNS)
+    assert not unknown, f"Not metadata columns: {unknown}"
+    transformers = []
+    if use_text:
+        transformers.append(
+            ("text", TfidfVectorizer(max_features=10000, ngram_range=(1, 2), min_df=2, max_df=0.9), "clean_text")
+        )
     if use_metadata:
-        transformers += [
+        meta = [
             ("subject", CountVectorizer(tokenizer=_split_subjects, lowercase=False, binary=True), "Subject(s)"),
             ("party", OneHotEncoder(handle_unknown="ignore"), ["Party"]),
             ("state", OneHotEncoder(handle_unknown="ignore", min_frequency=5), ["State"]),
             ("job", OneHotEncoder(handle_unknown="ignore", min_frequency=5), ["Speaker's job title"]),
             ("context", OneHotEncoder(handle_unknown="ignore", min_frequency=5), ["Context"]),
         ]
+        source = {"subject": "Subject(s)", "party": "Party", "state": "State", "job": "Speaker's job title", "context": "Context"}
+        transformers += [t for t in meta if source[t[0]] in columns]
+    if include_speaker:
+        transformers.append(("speaker", FunctionTransformer(_hash_speaker), ["Speaker"]))
     return ColumnTransformer(transformers=transformers)

@@ -1,0 +1,101 @@
+Model,Feature space,Protocol,Fold,Macro-F1
+Naive Bayes,text,random,0,0.5741447321469121
+Naive Bayes,text,random,1,0.6133456990018651
+Naive Bayes,text,random,2,0.5916079857486773
+Naive Bayes,text,random,3,0.58778855154348
+Naive Bayes,text,random,4,0.6022429877717714
+Naive Bayes,text,speaker-disjoint,0,0.5958178605512563
+Naive Bayes,text,speaker-disjoint,1,0.5828310007712199
+Naive Bayes,text,speaker-disjoint,2,0.574797277722894
+Naive Bayes,text,speaker-disjoint,3,0.5932242244311242
+Naive Bayes,text,speaker-disjoint,4,0.5619738381755018
+Logistic Regression,text,random,0,0.5961040039873733
+Logistic Regression,text,random,1,0.6136580334421056
+Logistic Regression,text,random,2,0.5941896119047652
+Logistic Regression,text,random,3,0.6068385359830941
+Logistic Regression,text,random,4,0.6119770465069768
+Logistic Regression,text,speaker-disjoint,0,0.5848243953893443
+Logistic Regression,text,speaker-disjoint,1,0.5961933687674006
+Logistic Regression,text,speaker-disjoint,2,0.6079224305361135
+Logistic Regression,text,speaker-disjoint,3,0.6063124622321387
+Logistic Regression,text,speaker-disjoint,4,0.6146994992744055
+Naive Bayes,metadata,random,0,0.588277928883965
+Naive Bayes,metadata,random,1,0.602927029768776
+Naive Bayes,metadata,random,2,0.591859123977731
+Naive Bayes,metadata,random,3,0.5985531712685074
+Naive Bayes,metadata,random,4,0.6047853265815113
+Naive Bayes,metadata,speaker-disjoint,0,0.5655824258505651
+Naive Bayes,metadata,speaker-disjoint,1,0.5771870303204683
+Naive Bayes,metadata,speaker-disjoint,2,0.5728722266667723
+Naive Bayes,metadata,speaker-disjoint,3,0.5668044073140768
+Naive Bayes,metadata,speaker-disjoint,4,0.555008210180624
+Logistic Regression,metadata,random,0,0.5903679140618554
+Logistic Regression,metadata,random,1,0.5950736670937222
+Logistic Regression,metadata,random,2,0.5941280657302404
+Logistic Regression,metadata,random,3,0.6070342088675578
+Logistic Regression,metadata,random,4,0.5983873678792397
+Logistic Regression,metadata,speaker-disjoint,0,0.5757954626948363
+Logistic Regression,metadata,speaker-disjoint,1,0.588526306036095
+Logistic Regression,metadata,speaker-disjoint,2,0.578702305486289
+Logistic Regression,metadata,speaker-disjoint,3,0.5776053760106492
+Logistic Regression,metadata,speaker-disjoint,4,0.5823274060926393
+Naive Bayes,text+metadata,random,0,0.6187333118524365
+Naive Bayes,text+metadata,random,1,0.638722514885976
+Naive Bayes,text+metadata,random,2,0.6259981014782421
+Naive Bayes,text+metadata,random,3,0.6202037287625921
+Naive Bayes,text+metadata,random,4,0.631889249176784
+Naive Bayes,text+metadata,speaker-disjoint,0,0.5994049084049649
+Naive Bayes,text+metadata,speaker-disjoint,1,0.6051381456663942
+Naive Bayes,text+metadata,speaker-disjoint,2,0.5996157781093853
+Naive Bayes,text+metadata,speaker-disjoint,3,0.60618226354344
+Naive Bayes,text+metadata,speaker-disjoint,4,0.5978309141995313
+Logistic Regression,text+metadata,random,0,0.6007909053315537
+Logistic Regression,text+metadata,random,1,0.6369809870850995
+Logistic Regression,text+metadata,random,2,0.621709553386572
+Logistic Regression,text+metadata,random,3,0.6352979476436191
+Logistic Regression,text+metadata,random,4,0.6163097416685526
+Logistic Regression,text+metadata,speaker-disjoint,0,0.5804425253708041
+Logistic Regression,text+metadata,speaker-disjoint,1,0.6245219511104154
+Logistic Regression,text+metadata,speaker-disjoint,2,0.6028066519112828
+Logistic Regression,text+metadata,speaker-disjoint,3,0.6118657612773326
+Logistic Regression,text+metadata,speaker-disjoint,4,0.6112788208505475
+Naive Bayes,text+metadata -job,random,0,0.6029137444494348
+Naive Bayes,text+metadata -job,random,1,0.6240503466988242
+Naive Bayes,text+metadata -job,random,2,0.6199113276073123
+Naive Bayes,text+metadata -job,random,3,0.6118344672852755
+Naive Bayes,text+metadata -job,random,4,0.6284573485741344
+Naive Bayes,text+metadata -job,speaker-disjoint,0,0.6002246789774539
+Naive Bayes,text+metadata -job,speaker-disjoint,1,0.5927409581785406
+Naive Bayes,text+metadata -job,speaker-disjoint,2,0.6084022499269626
+Naive Bayes,text+metadata -job,speaker-disjoint,3,0.5979924837067694
+Naive Bayes,text+metadata -job,speaker-disjoint,4,0.5883806808157792
+Logistic Regression,text+metadata -job,random,0,0.5984485652298498
+Logistic Regression,text+metadata -job,random,1,0.6283241482807345
+Logistic Regression,text+metadata -job,random,2,0.6188905931737197
+Logistic Regression,text+metadata -job,random,3,0.6364096145045033
+Logistic Regression,text+metadata -job,random,4,0.6208385231748249
+Logistic Regression,text+metadata -job,speaker-disjoint,0,0.5817174777970313
+Logistic Regression,text+metadata -job,speaker-disjoint,1,0.6034405681464505
+Logistic Regression,text+metadata -job,speaker-disjoint,2,0.6042272089638219
+Logistic Regression,text+metadata -job,speaker-disjoint,3,0.6068170394511574
+Logistic Regression,text+metadata -job,speaker-disjoint,4,0.5998349671863664
+Naive Bayes,text+metadata -job -context,random,0,0.5975016710794945
+Naive Bayes,text+metadata -job -context,random,1,0.6309268817288709
+Naive Bayes,text+metadata -job -context,random,2,0.6226457068342444
+Naive Bayes,text+metadata -job -context,random,3,0.6117603345340958
+Naive Bayes,text+metadata -job -context,random,4,0.6236199842419525
+Naive Bayes,text+metadata -job -context,speaker-disjoint,0,0.5967691554954493
+Naive Bayes,text+metadata -job -context,speaker-disjoint,1,0.5916722228557716
+Naive Bayes,text+metadata -job -context,speaker-disjoint,2,0.6025596003132907
+Naive Bayes,text+metadata -job -context,speaker-disjoint,3,0.6023603307636309
+Naive Bayes,text+metadata -job -context,speaker-disjoint,4,0.5919739789413136
+Logistic Regression,text+metadata -job -context,random,0,0.5991748991748992
+Logistic Regression,text+metadata -job -context,random,1,0.6396726511645769
+Logistic Regression,text+metadata -job -context,random,2,0.6220152748773768
+Logistic Regression,text+metadata -job -context,random,3,0.6294243696028485
+Logistic Regression,text+metadata -job -context,random,4,0.625759656546161
+Logistic Regression,text+metadata -job -context,speaker-disjoint,0,0.5901730675404837
+Logistic Regression,text+metadata -job -context,speaker-disjoint,1,0.598344572667568
+Logistic Regression,text+metadata -job -context,speaker-disjoint,2,0.6091409351713257
+Logistic Regression,text+metadata -job -context,speaker-disjoint,3,0.6126757943299352
+Logistic Regression,text+metadata -job -context,speaker-disjoint,4,0.6076310585379161

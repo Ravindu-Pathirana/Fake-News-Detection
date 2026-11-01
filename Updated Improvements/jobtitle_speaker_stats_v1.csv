@@ -1,0 +1,9 @@
+,value
+distinct job titles (train+valid),1258
+titles held by exactly one speaker,1136
+share of titles held by one speaker,0.9030206677265501
+rows whose title is held by one speaker,3595
+share of all rows,0.3119576535925026
+rows with missing title,3243
+'President-Elect' rows (speakers),310 ({'donald-trump': np.int64(310)})
+'President' rows (speakers),"553 ({'barack-obama': np.int64(549), 'george-w-bush': np.int64(4)})"

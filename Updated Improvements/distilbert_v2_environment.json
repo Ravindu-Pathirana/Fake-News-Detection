@@ -1,0 +1,57 @@
+{
+  "python": "3.13.15",
+  "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+  "torch": "2.11.0+cu128",
+  "transformers": "5.16.1",
+  "sklearn": "1.6.1",
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "cuda": "12.8",
+  "amp_fp16": true,
+  "smoke": false,
+  "parse_mode": "project",
+  "data_files": {
+    "train": "/kaggle/input/datasets/uom230467r/liar-dataset/train.csv",
+    "valid": "/kaggle/input/datasets/uom230467r/liar-dataset/valid.csv",
+    "test": "/kaggle/input/datasets/uom230467r/liar-dataset/test.csv"
+  },
+  "protocol": {
+    "lrs": [
+      2e-05,
+      3e-05,
+      5e-05
+    ],
+    "epochs": [
+      2,
+      3,
+      4
+    ],
+    "final_seeds": [
+      42,
+      43,
+      44
+    ],
+    "primary_seed": 42,
+    "inner_holdout": 0.1,
+    "batch_size": 16,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.0,
+    "max_grad_norm": 1.0,
+    "max_length": 128,
+    "variants": [
+      "text",
+      "text_meta"
+    ],
+    "metadata_columns": [
+      "Subject(s)",
+      "Speaker's job title",
+      "State",
+      "Party",
+      "Context"
+    ],
+    "truncated_share_pool": {
+      "text": 0.00026032627559875043,
+      "text_meta": 0.0004338771259979174
+    }
+  }
+}
