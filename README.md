@@ -1,88 +1,91 @@
 # Fake-News-Detection
-This repository presents an Explainable Fake News Detection system developed using classical machine learning techniques and evaluated on the LIAR benchmark dataset. The project focuses not only on improving classification performance but also on enhancing model interpretability using Explainable AI (XAI) methods.
 
-🚀 Key Features
+Code and data for the paper **"A Controlled and Explainable Evaluation of Classical
+Machine Learning for Fake News Detection"** by Ravindu Pathirana (University of
+Moratuwa), accepted at ICAC 2026.
 
-	•	🔍 Binary Fake News Classification (Fake vs Real)
-	•	📊 Baseline Reproduction using:
-	•	Logistic Regression (LR)
-	•	Support Vector Machines (SVM)
-	•	⚡ Advanced Models:
-	•	Naive Bayes (NB)
-	•	Random Forest (RF)
-	•	XGBoost
-	•	🧠 Feature Engineering:
-	•	TF-IDF (Unigrams + Bigrams)
-	•	Meta-data integration (speaker, party, context, etc.)
-	•	🎯 Feature Selection Techniques:
-	•	Chi-Square (χ²)
-	•	Mutual Information (MI)
-	•	📈 Hyperparameter Optimization using GridSearchCV
-	•	🔎 Explainability Analysis:
-	•	SHAP (global & local interpretation)
-	
-📊 Results Summary
+The study evaluates five classical machine learning models (Logistic Regression,
+SVM, Naive Bayes, Random Forest, XGBoost) on the binary LIAR benchmark. It uses
+TF-IDF text features and structured metadata. The evaluation protocol is the main
+subject: leakage-safe pipelines, cross-validation-only model selection, Holm-corrected
+significance tests, a speaker-disjoint check, and SHAP explanations read as a bias
+audit. A fine-tuned DistilBERT model is included as a reference point.
 
-	•	Best model (label-corrected, macro-F1): Naive Bayes on text + metadata, test macro-F1 = 0.654
-	•	Metric: macro-F1 is used throughout (not accuracy or positive-class F1), since the dataset is class-imbalanced
-	•	Classical models are tuned by 5-fold cross-validation over the combined LIAR train+validation split (test is the only held-out data reported); the DistilBERT reference model instead follows the official train/validation/test split, so its training-data budget is not identical to the classical models'
-	•	Adding metadata and Chi-square feature selection to Logistic Regression significantly improves over text-only (macro-F1 0.628 vs 0.596, McNemar p = 0.034); a further hyperparameter-tuning step does not generalize (p = 0.583)
-	•	Explainability analysis (SHAP) shows the model relies heavily on topical/entity features, including party affiliation -- reported as evidence of dataset-level topical bias, not of learned deception cues
+## Main results
 
-An earlier draft of this project reported an F1-score of 0.87, which was traced to a
-label-mapping bug (see `Fake-News-Detection/CLAUDE.md`); the corrected, honest
-performance range for LIAR-binary classification with classical models is macro-F1
-~0.60-0.65, which this project treats as a normal, reportable result rather than a
-shortfall.
+All numbers are macro-F1 on the 1,267-statement test split (see the data note below).
 
-🧪 Dataset
+| Configuration | Test macro-F1 |
+|---|---|
+| Naive Bayes, text + metadata (best classical model) | 0.655 |
+| Naive Bayes, metadata only | 0.618 |
+| Logistic Regression, text only | 0.615 |
+| Naive Bayes, text only | 0.604 |
+| DistilBERT, text + metadata (mean of 3 seeds) | 0.651 |
+| DistilBERT, text only (mean of 3 seeds) | 0.641 |
 
-	•	LIAR Dataset (Wang, 2017)
-	•	12,836 labeled political statements
-	•	Converted from 6-class → binary classification
-	•	Includes:
-	•	Train / Validation / Test splits
-	•	Text + meta-data features
+- **Text + metadata beats either source alone.** Naive Bayes on text + metadata beats
+  text alone and metadata alone, and beats Logistic Regression and SVM on the same
+  features. These gaps stay significant after Holm correction over a fixed family of
+  12 paired McNemar tests. The gaps to Random Forest and XGBoost do not.
+- **Feature selection and tuning do not hold up.** In a single-model Logistic
+  Regression ablation, the gains of about 0.03 from Chi-square feature selection and
+  from tuning are not significant after correction. Configurations are selected by
+  cross-validation only, never by test score.
+- **Job title acts as a speaker identifier.** 90.3% of distinct job titles belong to
+  a single speaker. Under speaker-disjoint cross-validation, the job-title benefit
+  disappears, while subject, party, state, and context keep a smaller gain.
+- **DistilBERT is stronger on text alone and level once metadata is added.** Trained
+  under the same conditions, it beats the text-only classical models, but its
+  text + metadata score is not significantly different from Naive Bayes.
+- **The strongest features are metadata, not wording.** SHAP ranks party, state, job
+  title, and subject as most influential, and no text token appears in the top
+  twenty. This is reported as dataset bias, not as evidence that the model detects
+  deception.
 
-⚙️ Methodology Overview
+Macro-F1 of about 0.60–0.65 is the normal range for binary LIAR with classical
+models.
 
-	1.	Data preprocessing (cleaning, tokenization, stemming)
-	2.	TF-IDF feature extraction
-	3.	Feature selection (χ², MI)
-	4.	Model training & tuning
-	5.	Evaluation using:
-	•	Accuracy
-	•	Precision
-	•	Recall
-	•	F1-score
-	6.	Explainability using SHAP
+## Data
 
-🧠 Key Insights (verified on corrected labels)
+- **Dataset:** LIAR (Wang, 2017), 12,836 short political statements from PolitiFact
+  with six truthfulness labels.
+- **Binary mapping:** pants-fire, false, and barely-true are mapped to *fake*;
+  half-true, mostly-true, and true are mapped to *real*.
+- **Rows used:** the CSVs in this repository read the release's tab-separated files
+  with standard CSV quote handling. Quotation marks inside eight statements absorb the
+  45 statements that follow them, so the splits have 10,240 / 1,284 / 1,267 rows
+  instead of the official 10,269 / 1,284 / 1,283. Every result uses these rows.
+- **Fitting pool:** classical models are fit on train + validation merged (11,524
+  rows) with 5-fold cross-validation. The test split is scored once per model.
+- **Excluded columns:** the five credit-history count columns are never used as
+  features, because they are derived from the labels. Speaker identity is excluded
+  by default.
 
-	•	Metadata (subject/party/state/job/context) improves every model over its text-only counterpart; adding it produces the largest single gain in this study
-	•	Naive Bayes on text+metadata is the strongest configuration overall, ahead of Random Forest and XGBoost -- ensemble/tree models do not outperform simpler models here
-	•	Chi-square selects better features than Mutual Information for most models tested (3 of 5: Random Forest, SVM, XGBoost); Mutual Information is better for Logistic Regression (0.620 vs 0.615) and Naive Bayes (0.587 vs 0.582)
-	•	Feature selection is fit inside every cross-validation fold (not once beforehand), so hyperparameter search never sees labels from its own held-out fold
-	•	A further hyperparameter-tuning step, despite looking best under cross-validation, does not produce a statistically significant gain on held-out test data (McNemar p = 0.583)
-	•	SHAP shows the model relies substantially on topical/entity/partisan features -- useful for auditing what the model actually keys on, not evidence the model detects deception
+## Repository layout
 
-🛠️ Tech Stack
+- **`Updated Improvements/`** — the corrected pipeline behind the paper: notebooks,
+  the two helper modules (`liar_utils.py`, `metadata_features.py`), result CSVs, and
+  figures. See [`RUN.md`](RUN.md) for the run order and which file produces each
+  table and figure.
+- **`artifacts/`** — the original first draft, kept unchanged as a before/after
+  record. Its notebooks have a label-mapping bug: `FALSE`/`TRUE` labels are stored in
+  uppercase but compared in lowercase. As a result, about 2,000 false statements were
+  labelled *real*, and the reported F1 of 0.87 was an artifact of that bug. Do not
+  use `artifacts/` to reproduce the paper.
+- **`requirements.txt`** — pinned library versions.
 
-	•	Python
-	•	Scikit-learn
-	•	XGBoost
-	•	Pandas / NumPy
-	•	SHAP (Explainable AI)
+## Tech stack
 
-📌 Future Work
+Python 3.9, scikit-learn 1.6.1, XGBoost 2.1.4, SHAP 0.49.1, pandas, NumPy, NLTK,
+statsmodels. DistilBERT uses PyTorch and Hugging Face Transformers.
 
-	•	Incorporate social/contextual features
-	•	Apply deep learning (LSTM, BERT)
-	•	Improve real-world deployment robustness
+## Citation
 
-👨‍💻 Author
+R. Pathirana, "A Controlled and Explainable Evaluation of Classical Machine Learning
+for Fake News Detection," in *Proc. ICAC 2026* (to appear).
 
-Ravindu Pathirana
+## Author
 
-University of Moratuwa
-
+Ravindu Pathirana, Department of Computer Science & Engineering, University of
+Moratuwa, Sri Lanka.
